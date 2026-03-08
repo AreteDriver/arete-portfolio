@@ -91,6 +91,60 @@ a:hover { color: var(--accent-dim); }
   margin: 0 auto;
 }
 
+.hero-bio {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-top: 16px;
+  letter-spacing: 0.02em;
+}
+
+/* Tech Stack */
+.tech-stack {
+  text-align: center;
+  padding: 0 24px 20px;
+}
+
+.stack-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stack-item {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+
+.stack-sep {
+  color: var(--border);
+  font-size: 0.85rem;
+}
+
+/* Section Thesis */
+.section-thesis {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-top: -20px;
+  margin-bottom: 28px;
+}
+
+/* Test Count */
+.test-count {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-dim);
+  opacity: 0.8;
+}
+
+.test-count::before {
+  content: " \00b7 ";
+}
+
 /* Section */
 .section {
   padding: 60px 0;
@@ -382,24 +436,43 @@ footer a:hover { color: var(--accent); }
     <a href="https://www.linkedin.com/in/james-y-3b77b3120" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 16 16"><path d="M13.632 13.635h-2.37V9.922c0-.886-.018-2.025-1.234-2.025-1.235 0-1.424.964-1.424 1.96v3.778h-2.37V6H8.51v1.04h.03c.318-.6 1.092-1.233 2.247-1.233 2.4 0 2.845 1.58 2.845 3.637v4.19zM3.558 4.955c-.762 0-1.376-.617-1.376-1.377 0-.758.614-1.375 1.376-1.375.76 0 1.376.617 1.376 1.375 0 .76-.616 1.377-1.376 1.377zm1.188 8.68H2.37V6h2.376v7.635zM14.816 0H1.18C.528 0 0 .516 0 1.153v13.694C0 15.484.528 16 1.18 16h13.635c.652 0 1.185-.516 1.185-1.153V1.153C16 .516 15.467 0 14.815 0z"/></svg></a>
     <a href="https://substack.com/@aretedriver" target="_blank" rel="noopener" aria-label="Substack"><svg viewBox="0 0 16 16"><path d="M14.4 1.6H1.6v1.8h12.8V1.6zm0 3.6H1.6v1.8h12.8V5.2zM1.6 8.8v5.6l6.4-3.2 6.4 3.2V8.8H1.6z"/></svg></a>
   </div>
+  <p class="hero-bio">17 years enterprise ops. Now building AI infrastructure.</p>
 </header>
+
+<!-- Tech Stack -->
+<section class="tech-stack">
+  <div class="container">
+    <div class="stack-items">
+      <span class="stack-item">Python</span>
+      <span class="stack-sep">/</span>
+      <span class="stack-item">Rust</span>
+      <span class="stack-sep">/</span>
+      <span class="stack-item">TypeScript</span>
+      <span class="stack-sep">/</span>
+      <span class="stack-item">SQLite</span>
+      <span class="stack-sep">/</span>
+      <span class="stack-item">FastAPI</span>
+    </div>
+  </div>
+</section>
 
 <main class="container">
 
   <!-- Tools -->
   <section class="section">
-    <h2 class="section-title"><span>//</span> Tools</h2>
+    <h2 class="section-title"><span>//</span> AI Developer Tools</h2>
+    <p class="section-thesis">CLI tools for the AI engineering workflow — cost tracking, prompt ops, context analysis, memory, and agent linting.</p>
     <div class="tools-grid">
 
       <div class="tool-card">
         <div class="tool-header">
           <span class="tool-name">agent-lint</span>
           <div class="tool-links">
-            <span class="badge">v0.2.0</span>
+            <a href="https://pypi.org/project/agentlinter/" target="_blank" rel="noopener" class="badge">v0.2.0</a>
             <a href="https://github.com/AreteDriver/agent-lint" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
-        <p class="tool-desc">Workflow YAML cost estimator + linter</p>
+        <p class="tool-desc">Workflow YAML cost estimator + linter <span class="test-count">262 tests</span></p>
         <div class="install-cmd" onclick="copyInstall(this)" title="Click to copy">
           <code>pip install agentlinter</code>
           <span class="copy-icon"><svg viewBox="0 0 16 16"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"/></svg></span>
@@ -410,11 +483,11 @@ footer a:hover { color: var(--accent); }
         <div class="tool-header">
           <span class="tool-name">ai-spend</span>
           <div class="tool-links">
-            <span class="badge">v0.2.0</span>
+            <a href="https://pypi.org/project/ai-spend/" target="_blank" rel="noopener" class="badge">v0.2.0</a>
             <a href="https://github.com/AreteDriver/ai-spend" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
-        <p class="tool-desc">AI API cost aggregator CLI</p>
+        <p class="tool-desc">AI API cost aggregator CLI <span class="test-count">248 tests</span></p>
         <div class="install-cmd" onclick="copyInstall(this)" title="Click to copy">
           <code>pip install ai-spend</code>
           <span class="copy-icon"><svg viewBox="0 0 16 16"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"/></svg></span>
@@ -425,11 +498,11 @@ footer a:hover { color: var(--accent); }
         <div class="tool-header">
           <span class="tool-name">promptctl</span>
           <div class="tool-links">
-            <span class="badge">v0.3.0</span>
+            <a href="https://pypi.org/project/promptctlai/" target="_blank" rel="noopener" class="badge">v0.3.0</a>
             <a href="https://github.com/AreteDriver/promptctl" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
-        <p class="tool-desc">Claude API toolkit — prompt engineering + code review + doc intelligence</p>
+        <p class="tool-desc">Claude API toolkit — prompt engineering + code review + doc intelligence <span class="test-count">311 tests</span></p>
         <div class="install-cmd" onclick="copyInstall(this)" title="Click to copy">
           <code>pip install promptctlai</code>
           <span class="copy-icon"><svg viewBox="0 0 16 16"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"/></svg></span>
@@ -444,7 +517,7 @@ footer a:hover { color: var(--accent); }
             <a href="https://github.com/AreteDriver/context-hygiene" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
-        <p class="tool-desc">Context window hygiene analyzer for LLM conversations</p>
+        <p class="tool-desc">Context window hygiene analyzer for LLM conversations <span class="test-count">379 tests</span></p>
         <span class="private-label">Private</span>
       </div>
 
@@ -452,11 +525,11 @@ footer a:hover { color: var(--accent); }
         <div class="tool-header">
           <span class="tool-name">mcp-manager</span>
           <div class="tool-links">
-            <span class="badge">v0.2.0</span>
+            <a href="https://pypi.org/project/arete-mcp/" target="_blank" rel="noopener" class="badge">v0.2.0</a>
             <a href="https://github.com/AreteDriver/mcp-manager" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
-        <p class="tool-desc">MCP server manager across agentic IDEs</p>
+        <p class="tool-desc">MCP server manager across agentic IDEs <span class="test-count">158 tests</span></p>
         <div class="install-cmd" onclick="copyInstall(this)" title="Click to copy">
           <code>pip install arete-mcp</code>
           <span class="copy-icon"><svg viewBox="0 0 16 16"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"/></svg></span>
@@ -467,11 +540,11 @@ footer a:hover { color: var(--accent); }
         <div class="tool-header">
           <span class="tool-name">claudemd-forge</span>
           <div class="tool-links">
-            <span class="badge">v0.3.0</span>
+            <a href="https://pypi.org/project/claudemd-forge/" target="_blank" rel="noopener" class="badge">v0.3.0</a>
             <a href="https://github.com/Arete-Consortium/claudemd-forge" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
-        <p class="tool-desc">CLAUDE.md generator + auditor + drift detector</p>
+        <p class="tool-desc">CLAUDE.md generator + auditor + drift detector <span class="test-count">594 tests</span></p>
         <div class="install-cmd" onclick="copyInstall(this)" title="Click to copy">
           <code>pip install claudemd-forge</code>
           <span class="copy-icon"><svg viewBox="0 0 16 16"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"/></svg></span>
@@ -482,11 +555,11 @@ footer a:hover { color: var(--accent); }
         <div class="tool-header">
           <span class="tool-name">memboot</span>
           <div class="tool-links">
-            <span class="badge">v0.3.0</span>
+            <a href="https://pypi.org/project/memboot/" target="_blank" rel="noopener" class="badge">v0.3.0</a>
             <a href="https://github.com/AreteDriver/memboot" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
           </div>
         </div>
-        <p class="tool-desc">Zero-infra persistent memory for LLMs</p>
+        <p class="tool-desc">Zero-infra persistent memory for LLMs <span class="test-count">304 tests</span></p>
         <div class="install-cmd" onclick="copyInstall(this)" title="Click to copy">
           <code>pip install memboot</code>
           <span class="copy-icon"><svg viewBox="0 0 16 16"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"/></svg></span>
@@ -516,9 +589,9 @@ footer a:hover { color: var(--accent); }
 
       <div class="flagship-card">
         <div class="flagship-header">
-          <span class="flagship-name">BenchGoblins</span>
+          <a href="https://benchgoblins.com" target="_blank" rel="noopener" class="flagship-name" style="text-decoration:none;color:#fff">BenchGoblins</a>
         </div>
-        <p class="flagship-desc">Fantasy football analytics SaaS — live at benchgoblins.com. Player dossiers, scoring engine, agent pipeline</p>
+        <p class="flagship-desc">Fantasy football analytics SaaS — <a href="https://benchgoblins.com" target="_blank" rel="noopener">live at benchgoblins.com</a>. Player dossiers, scoring engine, agent pipeline</p>
         <div class="flagship-stats">
           <span class="flagship-stat"><strong>2,001</strong> tests</span>
           <span class="flagship-stat"><strong>99%</strong> coverage</span>
