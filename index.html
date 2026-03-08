@@ -393,6 +393,145 @@ a:hover { color: var(--accent-dim); }
   margin-top: 4px;
 }
 
+/* Case Study */
+.case-study {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+.case-study-header {
+  margin-bottom: 28px;
+}
+
+.case-study-tool {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.case-study-subtitle {
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.case-study-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.case-study-block {
+  padding: 0;
+}
+
+.case-block-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.case-study-block p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.case-list {
+  list-style: none;
+  padding: 0;
+}
+
+.case-list li {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.case-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.case-list li strong {
+  color: var(--text);
+}
+
+.case-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.case-result-item {
+  text-align: center;
+  padding: 12px;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.case-result-number {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.case-result-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  display: block;
+}
+
+.case-study-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.case-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 6px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.case-link:hover {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--accent);
+}
+
+.case-install {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
 /* Footer */
 footer {
   text-align: center;
@@ -622,6 +761,67 @@ footer a:hover { color: var(--accent); }
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- Case Study -->
+  <section class="section">
+    <h2 class="section-title"><span>//</span> Case Study</h2>
+    <div class="case-study">
+      <div class="case-study-header">
+        <span class="case-study-tool">claudemd-forge</span>
+        <span class="case-study-subtitle">How I solved context drift for AI coding agents</span>
+      </div>
+
+      <div class="case-study-grid">
+        <div class="case-study-block">
+          <h3 class="case-block-title">Problem</h3>
+          <p>AI coding agents like Claude Code rely on CLAUDE.md files for project context — coding standards, architecture, commands, anti-patterns. But these files are written by hand, go stale within days, and nobody audits them. The agent makes worse decisions every time the context drifts from reality.</p>
+        </div>
+
+        <div class="case-study-block">
+          <h3 class="case-block-title">Solution</h3>
+          <p>Built a CLI that analyzes your codebase and generates accurate CLAUDE.md files automatically. It reads pyproject.toml, package.json, Cargo.toml, detects naming conventions by sampling source files, maps architecture trees, and extracts commands from CI configs. Then it audits existing files for accuracy and detects behavioral drift across LLM model versions using benchmark suites.</p>
+        </div>
+
+        <div class="case-study-block">
+          <h3 class="case-block-title">Architecture</h3>
+          <ul class="case-list">
+            <li><strong>Generator</strong> — metadata extraction, pattern analysis, Jinja2 templates</li>
+            <li><strong>Auditor</strong> — 4 accuracy checkers validate claims against codebase</li>
+            <li><strong>Drift Detector</strong> — 6 check types, 4 model adapters, YAML benchmark suites, trend visualization</li>
+            <li><strong>License Server</strong> — FastAPI, SHA-256 hashed keys, rate limiting, activation tracking</li>
+          </ul>
+        </div>
+
+        <div class="case-study-block">
+          <h3 class="case-block-title">Results</h3>
+          <div class="case-results">
+            <div class="case-result-item">
+              <span class="case-result-number">594</span>
+              <span class="case-result-label">tests passing</span>
+            </div>
+            <div class="case-result-item">
+              <span class="case-result-number">13+</span>
+              <span class="case-result-label">repos using forge-generated CLAUDE.md</span>
+            </div>
+            <div class="case-result-item">
+              <span class="case-result-number">8</span>
+              <span class="case-result-label">repos validated with drift detector</span>
+            </div>
+            <div class="case-result-item">
+              <span class="case-result-number">100/100</span>
+              <span class="case-result-label">audit score on own CLAUDE.md</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study-footer">
+        <a href="https://pypi.org/project/claudemd-forge/" target="_blank" rel="noopener" class="case-link">PyPI</a>
+        <a href="https://github.com/Arete-Consortium/claudemd-forge" target="_blank" rel="noopener" class="case-link">GitHub</a>
+        <span class="case-install">pip install claudemd-forge</span>
+      </div>
     </div>
   </section>
 
