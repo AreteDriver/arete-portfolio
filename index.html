@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARETE — AI Developer Tools</title>
+<meta name="description" content="AI Developer Tools — Ship faster, spend less, stay sovereign. 7 published CLI tools, 30,000+ tests, 3 live production systems.">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0f0f0f;
+  --bg-card: #161616;
+  --bg-card-hover: #1a1a1a;
+  --accent: #00ff88;
+  --accent-dim: #00cc6e;
+  --text: #e0e0e0;
+  --text-muted: #888;
+  --border: #2a2a2a;
+  --radius: 8px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-dim); }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 100px 24px 80px;
+}
+
+.hero-brand {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Section */
+.section {
+  padding: 60px 0;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+
+.section-title span {
+  color: var(--accent);
+}
+
+/* Tools Grid */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.tool-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.tool-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.tool-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.tool-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.tool-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gh-link {
+  color: var(--text-muted);
+  transition: color 0.2s;
+  display: flex;
+}
+
+.gh-link:hover { color: var(--accent); }
+
+.gh-link svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #1a3a2a;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.badge-private {
+  background: #2a2020;
+  color: #ff8866;
+}
+
+.tool-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.install-cmd {
+  display: flex;
+  align-items: center;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 0.82rem;
+  color: var(--accent);
+  cursor: pointer;
+  transition: border-color 0.2s;
+  position: relative;
+}
+
+.install-cmd:hover {
+  border-color: var(--accent);
+}
+
+.install-cmd code {
+  flex: 1;
+  user-select: all;
+}
+
+.install-cmd .copy-icon {
+  color: var(--text-muted);
+  margin-left: 8px;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.install-cmd:hover .copy-icon {
+  color: var(--accent);
+}
+
+.install-cmd .copy-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  display: block;
+}
+
+.install-cmd.copied {
+  border-color: var(--accent);
+}
+
+.install-cmd.copied .copy-icon {
+  color: var(--accent);
+}
+
+.private-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Flagship */
+.flagship-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.flagship-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.flagship-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.flagship-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.flagship-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.flagship-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.flagship-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.flagship-stat {
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.flagship-stat strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Stats Bar */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  padding: 48px 24px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+  display: block;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+footer a {
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+footer a:hover { color: var(--accent); }
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.footer-links svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .hero { padding: 64px 24px 48px; }
+  .hero-brand { font-size: 2.5rem; letter-spacing: 0.15em; }
+  .hero-tagline { font-size: 1.05rem; }
+  .tools-grid, .flagship-grid { grid-template-columns: 1fr; }
+  .stats-bar { gap: 32px; }
+  .stat-number { font-size: 1.5rem; }
+  .section { padding: 40px 0; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-brand">ARETE</div>
+  <p class="hero-tagline">AI Developer Tools — Ship faster, spend less, stay sovereign</p>
+</header>
+
+<main class="container">
+
+  <!-- Tools -->
+  <section class="section">
+    <h2 class="section-title"><span>//</span> Tools</h2>
+    <div class="tools-grid">
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">agent-lint</span>
+          <div class="tool-links">
+            <span class="badge">v0.2.0</span>
+            <a href="https://github.com/AreteDriver/agent-lint" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          </div>
+        </div>
+        <p class="tool-desc">Workflow YAML cost estimator + linter</p>
+        <div class="install-cmd" onclick="copyInstall(this)" title="Click to copy">
+          <code>pip install agentlinter</code>
+          <span class="copy-icon"><svg viewBox="0 0 16 16"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">ai-spend</span>
+          <div class="tool-links">
+            <span class="badge">v0.2.0</span>
+            <a href="https://github.com/AreteDriver/ai-spend" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          </div>
+        </div>
+        <p class="tool-desc">AI API cost aggregator CLI</p>
+        <div class="install-cmd" onclick="copyInstall(this)" title="Click to copy">
+          <code>pip install ai-spend</code>
+          <span class="copy-icon"><svg viewBox="0 0 16 16"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">promptctl</span>
+          <div class="tool-links">
+            <span class="badge">v0.3.0</span>
+            <a href="https://github.com/AreteDriver/promptctl" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          </div>
+        </div>
+        <p class="tool-desc">Claude API toolkit — prompt engineering + code review + doc intelligence</p>
+        <div class="install-cmd" onclick="copyInstall(this)" title="Click to copy">
+          <code>pip install promptctlai</code>
+          <span class="copy-icon"><svg viewBox="0 0 16 16"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">context-hygiene</span>
+          <div class="tool-links">
+            <span class="badge badge-private">v0.2.0</span>
+            <a href="https://github.com/AreteDriver/context-hygiene" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          </div>
+        </div>
+        <p class="tool-desc">Context window hygiene analyzer for LLM conversations</p>
+        <span class="private-label">Private</span>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">mcp-manager</span>
+          <div class="tool-links">
+            <span class="badge">v0.2.0</span>
+            <a href="https://github.com/AreteDriver/mcp-manager" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          </div>
+        </div>
+        <p class="tool-desc">MCP server manager across agentic IDEs</p>
+        <div class="install-cmd" onclick="copyInstall(this)" title="Click to copy">
+          <code>pip install arete-mcp</code>
+          <span class="copy-icon"><svg viewBox="0 0 16 16"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">claudemd-forge</span>
+          <div class="tool-links">
+            <span class="badge">v0.3.0</span>
+            <a href="https://github.com/Arete-Consortium/claudemd-forge" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          </div>
+        </div>
+        <p class="tool-desc">CLAUDE.md generator + auditor + drift detector</p>
+        <div class="install-cmd" onclick="copyInstall(this)" title="Click to copy">
+          <code>pip install claudemd-forge</code>
+          <span class="copy-icon"><svg viewBox="0 0 16 16"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"/></svg></span>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">memboot</span>
+          <div class="tool-links">
+            <span class="badge">v0.3.0</span>
+            <a href="https://github.com/AreteDriver/memboot" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+          </div>
+        </div>
+        <p class="tool-desc">Zero-infra persistent memory for LLMs</p>
+        <div class="install-cmd" onclick="copyInstall(this)" title="Click to copy">
+          <code>pip install memboot</code>
+          <span class="copy-icon"><svg viewBox="0 0 16 16"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25zM5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25z"/></svg></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Flagship Projects -->
+  <section class="section">
+    <h2 class="section-title"><span>//</span> Flagship Projects</h2>
+    <div class="flagship-grid">
+
+      <div class="flagship-card">
+        <div class="flagship-header">
+          <span class="flagship-name">Animus</span>
+          <a href="https://github.com/AreteDriver/animus" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16" style="width:22px;height:22px;fill:currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+        </div>
+        <p class="flagship-desc">AI agent framework — autonomous build pipelines, dual-model routing, streaming, MCP server, identity system with guardrails</p>
+        <div class="flagship-stats">
+          <span class="flagship-stat"><strong>13,676+</strong> tests</span>
+          <span class="flagship-stat"><strong>4</strong> packages</span>
+          <span class="flagship-stat"><strong>97%</strong> coverage</span>
+        </div>
+      </div>
+
+      <div class="flagship-card">
+        <div class="flagship-header">
+          <span class="flagship-name">BenchGoblins</span>
+        </div>
+        <p class="flagship-desc">Fantasy football analytics SaaS — live at benchgoblins.com. Player dossiers, scoring engine, agent pipeline</p>
+        <div class="flagship-stats">
+          <span class="flagship-stat"><strong>2,001</strong> tests</span>
+          <span class="flagship-stat"><strong>99%</strong> coverage</span>
+          <span class="flagship-stat"><strong>Live</strong> on Fly.io + Vercel</span>
+        </div>
+      </div>
+
+      <div class="flagship-card">
+        <div class="flagship-header">
+          <span class="flagship-name">Convergent</span>
+          <a href="https://github.com/AreteDriver/Convergent" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg viewBox="0 0 16 16" style="width:22px;height:22px;fill:currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+        </div>
+        <p class="flagship-desc">Multi-agent conflict resolution — versioned intent graphs, overlap detection, Python + Rust (PyO3)</p>
+        <div class="flagship-stats">
+          <span class="flagship-stat"><strong>868</strong> tests</span>
+          <span class="flagship-stat"><strong>97%</strong> coverage</span>
+          <span class="flagship-stat"><strong>Live</strong> on PyPI</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-number">30,000+</span>
+      <span class="stat-label">tests across the fleet</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">7</span>
+      <span class="stat-label">published CLI tools</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">3</span>
+      <span class="stat-label">live production systems</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/AreteDriver" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+  </div>
+  <p>Built by ARETE</p>
+</footer>
+
+<script>
+function copyInstall(el) {
+  const text = el.querySelector('code').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    el.classList.add('copied');
+    const icon = el.querySelector('.copy-icon');
+    const original = icon.innerHTML;
+    icon.innerHTML = '<svg viewBox="0 0 16 16" style="width:16px;height:16px;fill:currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg>';
+    setTimeout(function() {
+      el.classList.remove('copied');
+      icon.innerHTML = original;
+    }, 1500);
+  });
+}
+</script>
+
+</body>
+</html>
