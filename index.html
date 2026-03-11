@@ -532,6 +532,118 @@ a:hover { color: var(--accent-dim); }
   margin-left: auto;
 }
 
+/* Case Study Cards Grid */
+.case-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.case-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.case-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.case-card-name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.case-card-live {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #1a3a2a;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.case-card-problem {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.case-card-solution {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.case-card-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.case-card-metric {
+  text-align: center;
+  padding: 8px;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.case-card-metric strong {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.case-card-metric span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.case-card-links {
+  display: flex;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.case-card-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 4px 12px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.case-card-link:hover {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--accent);
+}
+
 /* Footer */
 footer {
   text-align: center;
@@ -567,10 +679,15 @@ footer a:hover { color: var(--accent); }
   .hero { padding: 64px 24px 48px; }
   .hero-brand { font-size: 2.5rem; letter-spacing: 0.15em; }
   .hero-tagline { font-size: 1.05rem; }
-  .tools-grid, .flagship-grid { grid-template-columns: 1fr; }
+  .tools-grid, .flagship-grid, .case-cards-grid { grid-template-columns: 1fr; }
+  .case-card-metrics { grid-template-columns: 1fr 1fr; }
   .stats-bar { gap: 32px; }
   .stat-number { font-size: 1.5rem; }
   .section { padding: 40px 0; }
+}
+
+@media (max-width: 360px) {
+  .case-card-metrics { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -584,6 +701,7 @@ footer a:hover { color: var(--accent); }
     <a href="https://github.com/AreteDriver" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
     <a href="https://www.linkedin.com/in/james-y-3b77b3120" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 16 16"><path d="M13.632 13.635h-2.37V9.922c0-.886-.018-2.025-1.234-2.025-1.235 0-1.424.964-1.424 1.96v3.778h-2.37V6H8.51v1.04h.03c.318-.6 1.092-1.233 2.247-1.233 2.4 0 2.845 1.58 2.845 3.637v4.19zM3.558 4.955c-.762 0-1.376-.617-1.376-1.377 0-.758.614-1.375 1.376-1.375.76 0 1.376.617 1.376 1.375 0 .76-.616 1.377-1.376 1.377zm1.188 8.68H2.37V6h2.376v7.635zM14.816 0H1.18C.528 0 0 .516 0 1.153v13.694C0 15.484.528 16 1.18 16h13.635c.652 0 1.185-.516 1.185-1.153V1.153C16 .516 15.467 0 14.815 0z"/></svg></a>
     <a href="https://substack.com/@aretedriver" target="_blank" rel="noopener" aria-label="Substack"><svg viewBox="0 0 16 16"><path d="M14.4 1.6H1.6v1.8h12.8V1.6zm0 3.6H1.6v1.8h12.8V5.2zM1.6 8.8v5.6l6.4-3.2 6.4 3.2V8.8H1.6z"/></svg></a>
+    <a href="https://buymeacoffee.com/aretedriver" target="_blank" rel="noopener" aria-label="Buy Me a Coffee"><svg viewBox="0 0 16 16"><path d="M13.478 4.276l-.088-.444c-.08-.399-.259-.776-.668-.92-.131-.045-.28-.065-.38-.16-.101-.096-.13-.244-.154-.382-.043-.252-.083-.504-.128-.755-.038-.217-.068-.46-.167-.659-.13-.266-.398-.422-.664-.525a3.815 3.815 0 00-.417-.13c-.667-.175-1.367-.24-2.052-.277a17.222 17.222 0 00-2.466.041c-.61.055-1.254.123-1.834.334-.212.077-.43.17-.592.334-.198.201-.262.513-.118.764.103.178.277.304.462.387.24.108.491.189.748.244.717.159 1.46.22 2.192.247.812.033 1.624.007 2.433-.079.2-.022.399-.048.598-.079.234-.036.385-.342.316-.556-.083-.255-.305-.354-.556-.315-.31.049-.64.072-.921.097-.785.053-1.572.055-2.357.004a14.82 14.82 0 01-.772-.071 4.36 4.36 0 01-.172-.024c-.162-.024-.322-.053-.483-.087-.074-.018-.074-.123 0-.141h.003c.185-.04.372-.072.559-.098h.001c.087-.006.175-.021.263-.032a16.717 16.717 0 012.284-.08c.449.013.898.041 1.343.087l.026.003c.074.009.177.022.362.06.192.04.305.115.398.264.059.09.098.209.098.325 0 .053-.009.099-.019.145l-.003.013-.088.436c-.06.3-.185.575-.461.73-.219.123-.496.18-.743.199-.812.06-1.631.045-2.443-.016a12.175 12.175 0 01-1.088-.141 6.178 6.178 0 01-.492-.103c-.231-.058-.461-.204-.461-.461 0-.163.069-.302.176-.41.148-.148.353-.222.552-.258.32-.056.644-.078.968-.091zm-2.319 3.195c-.163 0-.325.012-.485.045-.303.061-.407.337-.245.559.139.19.373.25.582.276.425.053.854.034 1.28.008.206-.013.412-.032.617-.06.178-.024.34-.13.34-.338 0-.18-.099-.314-.264-.354a3.572 3.572 0 00-.461-.075 9.717 9.717 0 00-1.364-.06zM3.001 7.457v4.243c0 .575.468 1.042 1.042 1.042h6.331v-1.907h1.402c.824 0 1.492-.669 1.492-1.492v-.573c0-.824-.669-1.493-1.492-1.493h-1.402V6.236H4.043c-.575 0-1.042.467-1.042 1.042v.18zm8.775 1.887h-1.402V7.457h1.402c.383 0 .693.31.693.693v.521c0 .383-.31.693-.693.693z"/></svg></a>
   </div>
   <p class="hero-bio">17 years enterprise ops. Now building AI infrastructure.</p>
 </header>
@@ -766,7 +884,7 @@ footer a:hover { color: var(--accent); }
 
   <!-- Case Study -->
   <section class="section">
-    <h2 class="section-title"><span>//</span> Case Study</h2>
+    <h2 class="section-title"><span>//</span> Case Studies</h2>
     <div class="case-study">
       <div class="case-study-header">
         <span class="case-study-tool">claudemd-forge</span>
@@ -823,6 +941,83 @@ footer a:hover { color: var(--accent); }
         <span class="case-install">pip install claudemd-forge</span>
       </div>
     </div>
+
+    <div class="case-cards-grid">
+
+      <div class="case-card">
+        <div class="case-card-header">
+          <h3 class="case-card-name">BenchGoblins</h3>
+          <span class="case-card-live">LIVE</span>
+        </div>
+        <p class="case-card-problem">Fantasy managers flying blind on roster decisions</p>
+        <p class="case-card-solution">Fantasy football analytics SaaS with scored LLM routing (signal weights), full ESPN + Yahoo parity for rosters/teams/standings/matchups, structured JSON logging, and the Goblin Verdict engine for data-driven start/sit calls.</p>
+        <div class="case-card-metrics">
+          <div class="case-card-metric"><strong>2,677</strong><span>tests</span></div>
+          <div class="case-card-metric"><strong>98%</strong><span>coverage</span></div>
+          <div class="case-card-metric"><strong>14</strong><span>commissioner tools</span></div>
+          <div class="case-card-metric"><strong>Fly.io</strong><span>+ Vercel</span></div>
+        </div>
+        <div class="case-card-links">
+          <a href="https://benchgoblins.com" target="_blank" rel="noopener" class="case-card-link">Live Site</a>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-header">
+          <h3 class="case-card-name">EVE Gatekeeper</h3>
+          <span class="case-card-live">LIVE</span>
+        </div>
+        <p class="case-card-problem">EVE Online players need real-time intel to survive</p>
+        <p class="case-card-solution">Intel platform with EVE SSO, 13-layer interactive map, wormhole database, Stripe subscriptions, and pilot threat intelligence — threat cards, system summaries, hotzone detection, fleet pilot lookup, and route warnings. PWA for mobile.</p>
+        <div class="case-card-metrics">
+          <div class="case-card-metric"><strong>2,989</strong><span>tests</span></div>
+          <div class="case-card-metric"><strong>80%</strong><span>coverage</span></div>
+          <div class="case-card-metric"><strong>13</strong><span>map layers</span></div>
+          <div class="case-card-metric"><strong>Fly.io</strong><span>+ Vercel</span></div>
+        </div>
+        <div class="case-card-links">
+          <a href="https://github.com/AreteDriver/EVE_Gatekeeper" target="_blank" rel="noopener" class="case-card-link">GitHub</a>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-header">
+          <h3 class="case-card-name">Animus</h3>
+          <span class="case-card-live">Flagship</span>
+        </div>
+        <p class="case-card-problem">AI agents need autonomy with guardrails</p>
+        <p class="case-card-solution">Monorepo agent framework with self-improvement loops (self-heal, sandbox, impact scoring, rollback), HybridBackend for Anthropic + Ollama routing, config hot-reload, 37 tools, 6 proactive checks, and a PWA with WebSocket + offline support.</p>
+        <div class="case-card-metrics">
+          <div class="case-card-metric"><strong>14,596+</strong><span>tests</span></div>
+          <div class="case-card-metric"><strong>97%</strong><span>coverage</span></div>
+          <div class="case-card-metric"><strong>4</strong><span>packages</span></div>
+          <div class="case-card-metric"><strong>37</strong><span>tools</span></div>
+        </div>
+        <div class="case-card-links">
+          <a href="https://github.com/AreteDriver/animus" target="_blank" rel="noopener" class="case-card-link">GitHub</a>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-header">
+          <h3 class="case-card-name">Convergent</h3>
+          <span class="case-card-live">PyPI</span>
+        </div>
+        <p class="case-card-problem">Multi-agent systems produce conflicting outputs</p>
+        <p class="case-card-solution">Conflict resolution library with versioned intent graphs, overlap detection, and structured merge strategies. Python + Rust core (PyO3) for performance-critical path resolution across concurrent agent sessions.</p>
+        <div class="case-card-metrics">
+          <div class="case-card-metric"><strong>904</strong><span>tests</span></div>
+          <div class="case-card-metric"><strong>97%</strong><span>coverage</span></div>
+          <div class="case-card-metric"><strong>Rust</strong><span>PyO3 core</span></div>
+          <div class="case-card-metric"><strong>Live</strong><span>on PyPI</span></div>
+        </div>
+        <div class="case-card-links">
+          <a href="https://pypi.org/project/convergentAI/" target="_blank" rel="noopener" class="case-card-link">PyPI</a>
+          <a href="https://github.com/AreteDriver/Convergent" target="_blank" rel="noopener" class="case-card-link">GitHub</a>
+        </div>
+      </div>
+
+    </div>
   </section>
 
   <!-- Stats Bar -->
@@ -848,6 +1043,7 @@ footer a:hover { color: var(--accent); }
     <a href="https://github.com/AreteDriver" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
     <a href="https://www.linkedin.com/in/james-y-3b77b3120" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 16 16"><path d="M13.632 13.635h-2.37V9.922c0-.886-.018-2.025-1.234-2.025-1.235 0-1.424.964-1.424 1.96v3.778h-2.37V6H8.51v1.04h.03c.318-.6 1.092-1.233 2.247-1.233 2.4 0 2.845 1.58 2.845 3.637v4.19zM3.558 4.955c-.762 0-1.376-.617-1.376-1.377 0-.758.614-1.375 1.376-1.375.76 0 1.376.617 1.376 1.375 0 .76-.616 1.377-1.376 1.377zm1.188 8.68H2.37V6h2.376v7.635zM14.816 0H1.18C.528 0 0 .516 0 1.153v13.694C0 15.484.528 16 1.18 16h13.635c.652 0 1.185-.516 1.185-1.153V1.153C16 .516 15.467 0 14.815 0z"/></svg></a>
     <a href="https://substack.com/@aretedriver" target="_blank" rel="noopener" aria-label="Substack"><svg viewBox="0 0 16 16"><path d="M14.4 1.6H1.6v1.8h12.8V1.6zm0 3.6H1.6v1.8h12.8V5.2zM1.6 8.8v5.6l6.4-3.2 6.4 3.2V8.8H1.6z"/></svg></a>
+    <a href="https://buymeacoffee.com/aretedriver" target="_blank" rel="noopener" aria-label="Buy Me a Coffee"><svg viewBox="0 0 16 16"><path d="M13.478 4.276l-.088-.444c-.08-.399-.259-.776-.668-.92-.131-.045-.28-.065-.38-.16-.101-.096-.13-.244-.154-.382-.043-.252-.083-.504-.128-.755-.038-.217-.068-.46-.167-.659-.13-.266-.398-.422-.664-.525a3.815 3.815 0 00-.417-.13c-.667-.175-1.367-.24-2.052-.277a17.222 17.222 0 00-2.466.041c-.61.055-1.254.123-1.834.334-.212.077-.43.17-.592.334-.198.201-.262.513-.118.764.103.178.277.304.462.387.24.108.491.189.748.244.717.159 1.46.22 2.192.247.812.033 1.624.007 2.433-.079.2-.022.399-.048.598-.079.234-.036.385-.342.316-.556-.083-.255-.305-.354-.556-.315-.31.049-.64.072-.921.097-.785.053-1.572.055-2.357.004a14.82 14.82 0 01-.772-.071 4.36 4.36 0 01-.172-.024c-.162-.024-.322-.053-.483-.087-.074-.018-.074-.123 0-.141h.003c.185-.04.372-.072.559-.098h.001c.087-.006.175-.021.263-.032a16.717 16.717 0 012.284-.08c.449.013.898.041 1.343.087l.026.003c.074.009.177.022.362.06.192.04.305.115.398.264.059.09.098.209.098.325 0 .053-.009.099-.019.145l-.003.013-.088.436c-.06.3-.185.575-.461.73-.219.123-.496.18-.743.199-.812.06-1.631.045-2.443-.016a12.175 12.175 0 01-1.088-.141 6.178 6.178 0 01-.492-.103c-.231-.058-.461-.204-.461-.461 0-.163.069-.302.176-.41.148-.148.353-.222.552-.258.32-.056.644-.078.968-.091zm-2.319 3.195c-.163 0-.325.012-.485.045-.303.061-.407.337-.245.559.139.19.373.25.582.276.425.053.854.034 1.28.008.206-.013.412-.032.617-.06.178-.024.34-.13.34-.338 0-.18-.099-.314-.264-.354a3.572 3.572 0 00-.461-.075 9.717 9.717 0 00-1.364-.06zM3.001 7.457v4.243c0 .575.468 1.042 1.042 1.042h6.331v-1.907h1.402c.824 0 1.492-.669 1.492-1.492v-.573c0-.824-.669-1.493-1.492-1.493h-1.402V6.236H4.043c-.575 0-1.042.467-1.042 1.042v.18zm8.775 1.887h-1.402V7.457h1.402c.383 0 .693.31.693.693v.521c0 .383-.31.693-.693.693z"/></svg></a>
   </div>
   <p>Built by ARETE</p>
 </footer>
