@@ -137,6 +137,44 @@ a:hover { color: var(--accent-dim); }
   outline: none;
 }
 
+/* Hero CTA */
+.hero-cta {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 12px 32px;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--radius);
+  transition: background 0.2s, transform 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.hero-cta:hover {
+  background: var(--accent-dim);
+  color: var(--bg);
+  transform: translateY(-1px);
+}
+
+/* Pricing badge */
+.badge-pricing {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #1a2a3a;
+  color: #4dc9f6;
+  letter-spacing: 0.02em;
+  margin-left: 6px;
+}
+
+.badge-free {
+  background: #1a3a2a;
+  color: var(--accent);
+}
+
 /* Accessibility: skip link */
 .skip-link {
   position: absolute;
@@ -839,12 +877,7 @@ button.install-cmd {
   </picture>
   <h1 class="hero-brand">ARETE</h1>
   <p class="hero-tagline">AI Developer Tools — Ship faster, spend less, stay sovereign</p>
-  <nav class="hero-links" aria-label="Social links">
-    <a href="https://github.com/AreteDriver" target="_blank" rel="noopener" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
-    <a href="https://www.linkedin.com/in/james-y-3b77b3120" target="_blank" rel="noopener" aria-label="LinkedIn"><svg aria-hidden="true"><use href="#icon-linkedin"/></svg></a>
-    <a href="https://substack.com/@aretedriver" target="_blank" rel="noopener" aria-label="Substack"><svg aria-hidden="true"><use href="#icon-substack"/></svg></a>
-    <a href="https://buymeacoffee.com/aretedriver" target="_blank" rel="noopener" aria-label="Buy Me a Coffee"><svg aria-hidden="true"><use href="#icon-bmac"/></svg></a>
-  </nav>
+  <a class="hero-cta" href="#tools">Explore Tools</a>
   <p class="hero-bio">17 years enterprise ops. Now building AI infrastructure.</p>
 </header>
 
@@ -875,7 +908,7 @@ button.install-cmd {
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">agent-lint</h3>
+          <h3 class="tool-name">agent-lint</h3><span class="badge-pricing">$8/mo</span>
           <div class="tool-links">
             <a href="https://pypi.org/project/agentlinter/" target="_blank" rel="noopener" class="badge">v0.2.0</a>
             <a href="https://github.com/AreteDriver/agent-lint" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -890,7 +923,7 @@ button.install-cmd {
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">ai-spend</h3>
+          <h3 class="tool-name">ai-spend</h3><span class="badge-pricing">$8/mo</span>
           <div class="tool-links">
             <a href="https://pypi.org/project/ai-spend/" target="_blank" rel="noopener" class="badge">v0.2.0</a>
             <a href="https://github.com/AreteDriver/ai-spend" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -905,7 +938,7 @@ button.install-cmd {
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">promptctl</h3>
+          <h3 class="tool-name">promptctl</h3><span class="badge-pricing">$8/mo</span>
           <div class="tool-links">
             <a href="https://pypi.org/project/promptctlai/" target="_blank" rel="noopener" class="badge">v0.3.0</a>
             <a href="https://github.com/AreteDriver/promptctl" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -920,7 +953,7 @@ button.install-cmd {
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">context-hygiene</h3>
+          <h3 class="tool-name">context-hygiene</h3><span class="badge-pricing badge-free">Free</span>
           <div class="tool-links">
             <span class="badge badge-private">v0.2.0</span>
             <a href="https://github.com/AreteDriver/context-hygiene" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -932,7 +965,7 @@ button.install-cmd {
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">mcp-manager</h3>
+          <h3 class="tool-name">mcp-manager</h3><span class="badge-pricing badge-free">Free</span>
           <div class="tool-links">
             <a href="https://pypi.org/project/arete-mcp/" target="_blank" rel="noopener" class="badge">v0.2.0</a>
             <a href="https://github.com/AreteDriver/mcp-manager" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -947,7 +980,7 @@ button.install-cmd {
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">claudemd-forge</h3>
+          <h3 class="tool-name">claudemd-forge</h3><span class="badge-pricing">$8/mo</span>
           <div class="tool-links">
             <a href="https://pypi.org/project/claudemd-forge/" target="_blank" rel="noopener" class="badge">v0.3.0</a>
             <a href="https://github.com/Arete-Consortium/claudemd-forge" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -962,7 +995,7 @@ button.install-cmd {
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">memboot</h3>
+          <h3 class="tool-name">memboot</h3><span class="badge-pricing badge-free">Free</span>
           <div class="tool-links">
             <a href="https://pypi.org/project/memboot/" target="_blank" rel="noopener" class="badge">v0.3.0</a>
             <a href="https://github.com/AreteDriver/memboot" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
