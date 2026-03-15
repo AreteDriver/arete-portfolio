@@ -157,22 +157,92 @@ a:hover { color: var(--accent-dim); }
   transform: translateY(-1px);
 }
 
-/* Pricing badge */
-.badge-pricing {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 10px;
-  background: #1a2a3a;
-  color: #4dc9f6;
-  letter-spacing: 0.02em;
-  margin-left: 6px;
+/* Card pricing footer */
+.tool-pricing {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
 }
 
-.badge-free {
-  background: #1a3a2a;
+.tool-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4dc9f6;
+  letter-spacing: 0.01em;
+}
+
+.tool-price.price-free {
   color: var(--accent);
+}
+
+.tool-price-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Bundle card */
+.bundle-card {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: rgba(0, 255, 136, 0.04);
+  text-align: center;
+}
+
+.bundle-title {
+  margin: 0 0 0.25rem;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.bundle-desc {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.bundle-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.bundle-btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.bundle-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+.bundle-btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.bundle-btn-primary:hover {
+  color: var(--bg);
+}
+
+.bundle-btn-secondary {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.bundle-savings {
+  font-weight: 400;
+  opacity: 0.7;
 }
 
 /* Accessibility: skip link */
@@ -914,7 +984,7 @@ button.install-cmd {
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">agent-lint</h3><span class="badge-pricing">$8/mo</span>
+          <h3 class="tool-name">agent-lint</h3>
           <div class="tool-links">
             <a href="https://pypi.org/project/agentlinter/" target="_blank" rel="noopener" class="badge">v0.2.0</a>
             <a href="https://github.com/AreteDriver/agent-lint" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -925,11 +995,15 @@ button.install-cmd {
           <code>pip install agentlinter</code>
           <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
+        <div class="tool-pricing">
+          <span class="tool-price">$8/mo</span>
+          <span class="tool-price-note">or save with bundle</span>
+        </div>
       </div>
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">ai-spend</h3><span class="badge-pricing">$8/mo</span>
+          <h3 class="tool-name">ai-spend</h3>
           <div class="tool-links">
             <a href="https://pypi.org/project/ai-spend/" target="_blank" rel="noopener" class="badge">v0.2.0</a>
             <a href="https://github.com/AreteDriver/ai-spend" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -940,11 +1014,15 @@ button.install-cmd {
           <code>pip install ai-spend</code>
           <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
+        <div class="tool-pricing">
+          <span class="tool-price">$8/mo</span>
+          <span class="tool-price-note">or save with bundle</span>
+        </div>
       </div>
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">promptctl</h3><span class="badge-pricing">$8/mo</span>
+          <h3 class="tool-name">promptctl</h3>
           <div class="tool-links">
             <a href="https://pypi.org/project/promptctlai/" target="_blank" rel="noopener" class="badge">v0.3.0</a>
             <a href="https://github.com/AreteDriver/promptctl" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -955,11 +1033,15 @@ button.install-cmd {
           <code>pip install promptctlai</code>
           <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
+        <div class="tool-pricing">
+          <span class="tool-price">$8/mo</span>
+          <span class="tool-price-note">or save with bundle</span>
+        </div>
       </div>
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">context-hygiene</h3><span class="badge-pricing">$8/mo</span>
+          <h3 class="tool-name">context-hygiene</h3>
           <div class="tool-links">
             <a href="https://pypi.org/project/context-hygiene/" target="_blank" rel="noopener" class="badge">v0.2.1</a>
             <a href="https://github.com/AreteDriver/context-hygiene" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -968,13 +1050,17 @@ button.install-cmd {
         <p class="tool-desc">Context window hygiene analyzer for LLM conversations <span class="test-count">398 tests</span></p>
         <button class="install-cmd" onclick="copyInstall(this)" title="Click to copy" aria-label="Copy install command">
           <code>pip install context-hygiene</code>
-          <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-github"/></svg></span>
+          <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
+        <div class="tool-pricing">
+          <span class="tool-price">$8/mo</span>
+          <span class="tool-price-note">or save with bundle</span>
+        </div>
       </div>
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">mcp-manager</h3><span class="badge-pricing badge-free">Free</span>
+          <h3 class="tool-name">mcp-manager</h3>
           <div class="tool-links">
             <a href="https://pypi.org/project/arete-mcp/" target="_blank" rel="noopener" class="badge">v0.2.0</a>
             <a href="https://github.com/AreteDriver/mcp-manager" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -985,11 +1071,15 @@ button.install-cmd {
           <code>pip install arete-mcp</code>
           <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
+        <div class="tool-pricing">
+          <span class="tool-price price-free">Free</span>
+          <span class="tool-price-note">open source</span>
+        </div>
       </div>
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">claudemd-forge</h3><span class="badge-pricing">$8/mo</span>
+          <h3 class="tool-name">claudemd-forge</h3>
           <div class="tool-links">
             <a href="https://pypi.org/project/claudemd-forge/" target="_blank" rel="noopener" class="badge">v0.3.0</a>
             <a href="https://github.com/Arete-Consortium/claudemd-forge" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -1000,11 +1090,15 @@ button.install-cmd {
           <code>pip install claudemd-forge</code>
           <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
+        <div class="tool-pricing">
+          <span class="tool-price">$8/mo</span>
+          <span class="tool-price-note">or save with bundle</span>
+        </div>
       </div>
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">memboot</h3><span class="badge-pricing badge-free">Free</span>
+          <h3 class="tool-name">memboot</h3>
           <div class="tool-links">
             <a href="https://pypi.org/project/memboot/" target="_blank" rel="noopener" class="badge">v0.3.0</a>
             <a href="https://github.com/AreteDriver/memboot" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
@@ -1015,16 +1109,20 @@ button.install-cmd {
           <code>pip install memboot</code>
           <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
+        <div class="tool-pricing">
+          <span class="tool-price price-free">Free</span>
+          <span class="tool-price-note">open source</span>
+        </div>
       </div>
 
     </div>
 
-    <div class="bundle-card" style="margin-top:1.5rem;padding:1.25rem 1.5rem;border:1px solid #00ff88;border-radius:8px;background:rgba(0,255,136,0.05);text-align:center">
-      <h3 style="margin:0 0 0.5rem;color:#00ff88;font-size:1.1rem">All 5 Pro Tools — Bundle &amp; Save</h3>
-      <p style="margin:0 0 1rem;color:#a0a0a0;font-size:0.9rem">claudemd-forge + agent-lint + ai-spend + promptctl + context-hygiene</p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="https://buy.stripe.com/7sY9AT9h90Kv5ha27ZgrS0a" target="_blank" rel="noopener" style="padding:0.5rem 1.5rem;background:#00ff88;color:#0f0f0f;border-radius:6px;font-weight:600;text-decoration:none;font-size:0.95rem">$29/mo <span style="font-weight:400;opacity:0.7">(save 27%)</span></a>
-        <a href="https://buy.stripe.com/9B6fZh9h98cX24YfYPgrS0b" target="_blank" rel="noopener" style="padding:0.5rem 1.5rem;border:1px solid #00ff88;color:#00ff88;border-radius:6px;font-weight:600;text-decoration:none;font-size:0.95rem">$199/yr <span style="font-weight:400;opacity:0.7">(save 43%)</span></a>
+    <div class="bundle-card">
+      <h3 class="bundle-title">All 5 Pro Tools — Bundle &amp; Save</h3>
+      <p class="bundle-desc">claudemd-forge + agent-lint + ai-spend + promptctl + context-hygiene</p>
+      <div class="bundle-links">
+        <a href="https://buy.stripe.com/7sY9AT9h90Kv5ha27ZgrS0a" target="_blank" rel="noopener" class="bundle-btn bundle-btn-primary">$29/mo <span class="bundle-savings">(save 27%)</span></a>
+        <a href="https://buy.stripe.com/9B6fZh9h98cX24YfYPgrS0b" target="_blank" rel="noopener" class="bundle-btn bundle-btn-secondary">$199/yr <span class="bundle-savings">(save 43%)</span></a>
       </div>
     </div>
 
