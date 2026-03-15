@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARETE — AI Developer Tools</title>
-<meta name="description" content="AI Developer Tools — Ship faster, spend less, stay sovereign. 7 published CLI tools, 30,000+ tests, 3 live production systems.">
+<meta name="description" content="AI Developer Tools — Ship faster, spend less, stay sovereign. 7 published CLI tools, 30,000+ tests, 6 live production systems, 3 hackathon builds.">
 <link rel="icon" type="image/jpeg" href="/logo.jpg">
 <meta property="og:title" content="ARETE — AI Developer Tools">
-<meta property="og:description" content="AI Developer Tools — Ship faster, spend less, stay sovereign. 7 published CLI tools, 30,000+ tests, 3 live production systems.">
+<meta property="og:description" content="AI Developer Tools — Ship faster, spend less, stay sovereign. 7 published CLI tools, 30,000+ tests, 6 live production systems, 3 hackathon builds.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aretedriver.dev">
 <meta property="og:image" content="https://aretedriver.dev/og-image.jpg">
@@ -29,7 +29,7 @@
       "@type": "WebSite",
       "name": "ARETE",
       "url": "https://aretedriver.dev/",
-      "description": "AI Developer Tools — Ship faster, spend less, stay sovereign."
+      "description": "AI Developer Tools — Ship faster, spend less, stay sovereign. 7 published CLI tools, 30,000+ tests, 6 live production systems, 3 hackathon builds."
     },
     {
       "@type": "Person",
@@ -461,6 +461,16 @@ a:hover { color: var(--accent-dim); }
 .badge-private {
   background: #2a2020;
   color: #ff8866;
+}
+
+.badge-hackathon {
+  background: #2a2a1a;
+  color: #ffd700;
+}
+
+.badge-blockchain {
+  background: #1a2a3a;
+  color: #4dc9f6;
 }
 
 .tool-desc {
@@ -948,6 +958,7 @@ button.install-cmd {
   <h1 class="hero-brand">ARETE</h1>
   <p class="hero-tagline">AI Developer Tools — Ship faster, spend less, stay sovereign</p>
   <a class="hero-cta" href="#tools">Explore Tools</a>
+  <a class="hero-cta" href="#hackathons" style="margin-left:12px;background:transparent;border:2px solid var(--accent);color:var(--accent)">Hackathon Projects</a>
   <p class="hero-bio">17 years enterprise ops. Now building AI infrastructure.</p>
   <div class="hero-social" style="display:flex;gap:1rem;justify-content:center;margin-top:0.75rem">
     <a href="https://github.com/AreteDriver" target="_blank" rel="noopener" aria-label="GitHub" style="color:#a0a0a0"><svg aria-hidden="true" style="width:22px;height:22px;fill:currentColor"><use href="#icon-github"/></svg></a>
@@ -967,9 +978,11 @@ button.install-cmd {
       <span class="stack-sep">/</span>
       <span class="stack-item">TypeScript</span>
       <span class="stack-sep">/</span>
-      <span class="stack-item">SQLite</span>
+      <span class="stack-item">React</span>
       <span class="stack-sep">/</span>
       <span class="stack-item">FastAPI</span>
+      <span class="stack-sep">/</span>
+      <span class="stack-item">Sui</span>
     </div>
   </div>
 </section>
@@ -1174,6 +1187,72 @@ button.install-cmd {
     </div>
   </section>
 
+  <!-- Hackathon Projects -->
+  <section id="hackathons" class="section">
+    <h2 class="section-title"><span>//</span> Hackathon Projects</h2>
+    <p class="section-thesis">EVE Frontier 2026 Hackathon — blockchain intelligence, tribe operations, and on-chain integrity monitoring built on Sui.</p>
+    <div class="case-cards-grid">
+
+      <div class="case-card">
+        <div class="case-card-header">
+          <h3 class="case-card-name">WatchTower</h3>
+          <span class="case-card-live">LIVE</span>
+        </div>
+        <p class="case-card-problem">Raw blockchain events are noise without analysis</p>
+        <p class="case-card-solution">Turns EVE Frontier on-chain Sui events into actionable intelligence — entity dossiers, behavioral fingerprints, earned titles, kill networks, danger zones, and on-chain reputation scoring across 6 dimensions. Reputation flows back to smart contracts for gate enforcement.</p>
+        <div class="case-card-metrics">
+          <div class="case-card-metric"><strong>662</strong><span>tests</span></div>
+          <div class="case-card-metric"><strong>33</strong><span>API endpoints</span></div>
+          <div class="case-card-metric"><strong>10</strong><span>Discord commands</span></div>
+          <div class="case-card-metric"><strong>Sui</strong><span>on-chain loop</span></div>
+        </div>
+        <div class="case-card-links">
+          <a href="https://watchtower-evefrontier.vercel.app/" target="_blank" rel="noopener" class="case-card-link">Live Site</a>
+          <a href="https://watchtower-evefrontier.fly.dev/docs" target="_blank" rel="noopener" class="case-card-link">API Docs</a>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-header">
+          <h3 class="case-card-name">Frontier Tribe OS</h3>
+          <span class="case-card-live">LIVE</span>
+        </div>
+        <p class="case-card-problem">Tribes have no operational infrastructure</p>
+        <p class="case-card-solution">Operations platform for EVE Frontier tribes — member roster with SSO, production job board (Kanban), tribe inventory tracking, real-time Sui wallet visibility, and transaction history with on-chain verification. No custodial wallets — client-side signing only via dapp-kit.</p>
+        <div class="case-card-metrics">
+          <div class="case-card-metric"><strong>193</strong><span>tests</span></div>
+          <div class="case-card-metric"><strong>7</strong><span>modules</span></div>
+          <div class="case-card-metric"><strong>Role</strong><span>gated access</span></div>
+          <div class="case-card-metric"><strong>Fly.io</strong><span>+ Vercel</span></div>
+        </div>
+        <div class="case-card-links">
+          <a href="https://frontend-ten-theta-80.vercel.app/" target="_blank" rel="noopener" class="case-card-link">Live Site</a>
+          <a href="https://frontier-tribe-os.fly.dev/docs" target="_blank" rel="noopener" class="case-card-link">API Docs</a>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-header">
+          <h3 class="case-card-name">Monolith</h3>
+          <span class="case-card-live">LIVE</span>
+        </div>
+        <p class="case-card-problem">Blockchain state anomalies go undetected until launch</p>
+        <p class="case-card-solution">Reads EVE Frontier on-chain Sui events and detects state anomalies — orphan objects, supply discrepancies, duplicate mints, stuck objects. 17 deterministic detection rules across 4 checkers, structured bug reports with on-chain evidence, Discord alerts for CRITICAL/HIGH severity.</p>
+        <div class="case-card-metrics">
+          <div class="case-card-metric"><strong>166</strong><span>tests</span></div>
+          <div class="case-card-metric"><strong>17</strong><span>detection rules</span></div>
+          <div class="case-card-metric"><strong>15</strong><span>API endpoints</span></div>
+          <div class="case-card-metric"><strong>Fly.io</strong><span>+ Vercel</span></div>
+        </div>
+        <div class="case-card-links">
+          <a href="https://monolith-frontend.vercel.app/" target="_blank" rel="noopener" class="case-card-link">Live Site</a>
+          <a href="https://monolith-backend.fly.dev/docs" target="_blank" rel="noopener" class="case-card-link">API Docs</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Case Study -->
   <section id="case-studies" class="section">
     <h2 class="section-title"><span>//</span> Case Studies</h2>
@@ -1311,6 +1390,24 @@ button.install-cmd {
 
       <div class="case-card">
         <div class="case-card-header">
+          <h3 class="case-card-name">Dossier</h3>
+          <span class="case-card-live">v0.6.0</span>
+        </div>
+        <p class="case-card-problem">Document analysis requires cloud dependencies</p>
+        <p class="case-card-solution">Local-first document intelligence — NER, classification, OCR, forensics timeline, entity graph analysis, and full-text search (FTS5). Zero cloud dependencies. Everything runs on your machine.</p>
+        <div class="case-card-metrics">
+          <div class="case-card-metric"><strong>1,055</strong><span>tests</span></div>
+          <div class="case-card-metric"><strong>97%</strong><span>coverage</span></div>
+          <div class="case-card-metric"><strong>NER</strong><span>+ OCR</span></div>
+          <div class="case-card-metric"><strong>SQLite</strong><span>FTS5</span></div>
+        </div>
+        <div class="case-card-links">
+          <a href="https://github.com/AreteDriver/Dossier" target="_blank" rel="noopener" class="case-card-link">GitHub</a>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-header">
           <h3 class="case-card-name">LikX</h3>
           <span class="case-card-live">PyPI + Snap</span>
         </div>
@@ -1328,6 +1425,25 @@ button.install-cmd {
         </div>
       </div>
 
+      <div class="case-card">
+        <div class="case-card-header">
+          <h3 class="case-card-name">G13 Linux</h3>
+          <span class="case-card-live">PyPI</span>
+        </div>
+        <p class="case-card-problem">Logitech G13 has no Linux driver</p>
+        <p class="case-card-solution">Full-featured Linux driver for the Logitech G13 gameboard — PyQt6 GUI for key mapping, LCD display control, macro recording, per-application profiles, WebSocket API for remote control, and AppImage distribution.</p>
+        <div class="case-card-metrics">
+          <div class="case-card-metric"><strong>1,641</strong><span>tests</span></div>
+          <div class="case-card-metric"><strong>88%</strong><span>coverage</span></div>
+          <div class="case-card-metric"><strong>PyQt6</strong><span>GUI</span></div>
+          <div class="case-card-metric"><strong>WebSocket</strong><span>API</span></div>
+        </div>
+        <div class="case-card-links">
+          <a href="https://pypi.org/project/g13-linux/" target="_blank" rel="noopener" class="case-card-link">PyPI</a>
+          <a href="https://github.com/AreteDriver/G13_Linux" target="_blank" rel="noopener" class="case-card-link">GitHub</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1342,8 +1458,12 @@ button.install-cmd {
       <span class="stat-label">published CLI tools</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">3</span>
+      <span class="stat-number">6</span>
       <span class="stat-label">live production systems</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">3</span>
+      <span class="stat-label">hackathon builds</span>
     </div>
   </section>
 
