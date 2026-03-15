@@ -44,12 +44,12 @@
     },
     {
       "@type": "SoftwareApplication",
-      "name": "claudemd-forge",
+      "name": "anchormd",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Linux, macOS, Windows",
-      "url": "https://pypi.org/project/claudemd-forge/",
+      "url": "https://pypi.org/project/anchormd/",
       "softwareVersion": "0.3.0",
-      "description": "CLAUDE.md generator + auditor + drift detector"
+      "description": "AI agent context file generator, auditor, and tech debt scanner"
     },
     {
       "@type": "SoftwareApplication",
@@ -1092,15 +1092,15 @@ button.install-cmd {
 
       <div class="tool-card">
         <div class="tool-header">
-          <h3 class="tool-name">claudemd-forge</h3>
+          <h3 class="tool-name">anchormd</h3>
           <div class="tool-links">
-            <a href="https://pypi.org/project/claudemd-forge/" target="_blank" rel="noopener" class="badge">v0.3.0</a>
-            <a href="https://github.com/Arete-Consortium/claudemd-forge" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
+            <a href="https://pypi.org/project/anchormd/" target="_blank" rel="noopener" class="badge">v0.3.0</a>
+            <a href="https://github.com/Arete-Consortium/anchormd" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
           </div>
         </div>
-        <p class="tool-desc">CLAUDE.md generator + auditor + drift detector <span class="test-count">594 tests</span></p>
+        <p class="tool-desc">AI agent context file generator, auditor + tech debt scanner <span class="test-count">693 tests</span></p>
         <button class="install-cmd" onclick="copyInstall(this)" title="Click to copy" aria-label="Copy install command">
-          <code>pip install claudemd-forge</code>
+          <code>pip install anchormd</code>
           <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
         <div class="tool-pricing">
@@ -1132,7 +1132,7 @@ button.install-cmd {
 
     <div class="bundle-card">
       <h3 class="bundle-title">All 5 Pro Tools — Bundle &amp; Save</h3>
-      <p class="bundle-desc">claudemd-forge + agent-lint + ai-spend + promptctl + context-hygiene</p>
+      <p class="bundle-desc">anchormd + agent-lint + ai-spend + promptctl + context-hygiene</p>
       <div class="bundle-links">
         <a href="https://buy.stripe.com/7sY9AT9h90Kv5ha27ZgrS0a" target="_blank" rel="noopener" class="bundle-btn bundle-btn-primary">$29/mo <span class="bundle-savings">(save 27%)</span></a>
         <a href="https://buy.stripe.com/9B6fZh9h98cX24YfYPgrS0b" target="_blank" rel="noopener" class="bundle-btn bundle-btn-secondary">$199/yr <span class="bundle-savings">(save 43%)</span></a>
@@ -1258,26 +1258,28 @@ button.install-cmd {
     <h2 class="section-title"><span>//</span> Case Studies</h2>
     <div class="case-study">
       <div class="case-study-header">
-        <span class="case-study-tool">claudemd-forge</span>
-        <span class="case-study-subtitle">How I solved context drift for AI coding agents</span>
+        <span class="case-study-tool">anchormd</span>
+        <span class="case-study-subtitle">How I solved context drift and tech debt detection for AI coding agents</span>
       </div>
 
       <div class="case-study-grid">
         <div class="case-study-block">
           <h3 class="case-block-title">Problem</h3>
-          <p>AI coding agents like Claude Code rely on CLAUDE.md files for project context — coding standards, architecture, commands, anti-patterns. But these files are written by hand, go stale within days, and nobody audits them. The agent makes worse decisions every time the context drifts from reality.</p>
+          <p>AI coding agents rely on context files (CLAUDE.md, AGENTS.md) for project context — coding standards, architecture, commands, anti-patterns. But these files are written by hand, go stale within days, and nobody audits them. The agent makes worse decisions every time the context drifts from reality.</p>
         </div>
 
         <div class="case-study-block">
           <h3 class="case-block-title">Solution</h3>
-          <p>Built a CLI that analyzes your codebase and generates accurate CLAUDE.md files automatically. It reads pyproject.toml, package.json, Cargo.toml, detects naming conventions by sampling source files, maps architecture trees, and extracts commands from CI configs. Then it audits existing files for accuracy and detects behavioral drift across LLM model versions using benchmark suites.</p>
+          <p>Built a CLI that analyzes your codebase and generates accurate context files automatically. It reads pyproject.toml, package.json, Cargo.toml, detects naming conventions by sampling source files, maps architecture trees, extracts commands from CI configs, scans for technical debt, and analyzes GitHub repo health. Then it audits existing files for accuracy and detects behavioral drift across LLM model versions using benchmark suites.</p>
         </div>
 
         <div class="case-study-block">
           <h3 class="case-block-title">Architecture</h3>
           <ul class="case-list">
             <li><strong>Generator</strong> — metadata extraction, pattern analysis, Jinja2 templates</li>
-            <li><strong>Auditor</strong> — 4 accuracy checkers validate claims against codebase</li>
+            <li><strong>Auditor</strong> — 5 accuracy checkers validate claims against codebase</li>
+            <li><strong>Tech Debt Scanner</strong> — 9 detection categories, 0-100 scored reports, security/complexity/quality signals</li>
+            <li><strong>GitHub Health</strong> — repo health analysis, cleanup agent for stale issues/PRs/branches</li>
             <li><strong>Drift Detector</strong> — 6 check types, 4 model adapters, YAML benchmark suites, trend visualization</li>
             <li><strong>License Server</strong> — FastAPI, SHA-256 hashed keys, rate limiting, activation tracking</li>
           </ul>
@@ -1287,7 +1289,7 @@ button.install-cmd {
           <h3 class="case-block-title">Results</h3>
           <div class="case-results">
             <div class="case-result-item">
-              <span class="case-result-number">594</span>
+              <span class="case-result-number">693</span>
               <span class="case-result-label">tests passing</span>
             </div>
             <div class="case-result-item">
@@ -1307,9 +1309,9 @@ button.install-cmd {
       </div>
 
       <div class="case-study-footer">
-        <a href="https://pypi.org/project/claudemd-forge/" target="_blank" rel="noopener" class="case-link">PyPI</a>
-        <a href="https://github.com/Arete-Consortium/claudemd-forge" target="_blank" rel="noopener" class="case-link">GitHub</a>
-        <span class="case-install">pip install claudemd-forge</span>
+        <a href="https://pypi.org/project/anchormd/" target="_blank" rel="noopener" class="case-link">PyPI</a>
+        <a href="https://github.com/Arete-Consortium/anchormd" target="_blank" rel="noopener" class="case-link">GitHub</a>
+        <span class="case-install">pip install anchormd</span>
       </div>
     </div>
 
