@@ -168,7 +168,7 @@ a:hover { color: var(--accent-dim); }
 }
 
 .tool-price {
-  font-size: 1.1rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: #4dc9f6;
   letter-spacing: 0.01em;
@@ -176,6 +176,32 @@ a:hover { color: var(--accent-dim); }
 
 .tool-price.price-free {
   color: var(--accent);
+}
+
+.price-tier {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.price-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+
+.price-pill-free {
+  background: rgba(0,255,136,0.12);
+  color: var(--accent);
+}
+
+.price-pill-pro {
+  background: rgba(77,201,246,0.12);
+  color: #4dc9f6;
 }
 
 .tool-price-note {
@@ -1072,7 +1098,7 @@ button.install-cmd {
           <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
         <div class="tool-pricing">
-          <span class="tool-price price-free">Free</span> / <span class="tool-price" style="color:#00ff88">Pro $8/mo</span>
+          <span class="price-tier"><span class="price-pill price-pill-free">FREE</span><span class="price-pill price-pill-pro">PRO $8/mo</span></span>
           <span class="tool-price-note">core linting free · advanced rules Pro</span>
         </div>
         <div class="tool-detail"><div class="tool-detail-inner">
@@ -1102,7 +1128,7 @@ button.install-cmd {
           <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
         <div class="tool-pricing">
-          <span class="tool-price price-free">Free</span> / <span class="tool-price" style="color:#00ff88">Pro $8/mo</span>
+          <span class="price-tier"><span class="price-pill price-pill-free">FREE</span><span class="price-pill price-pill-pro">PRO $8/mo</span></span>
           <span class="tool-price-note">3 providers free · unlimited Pro</span>
         </div>
         <div class="tool-detail"><div class="tool-detail-inner">
@@ -1132,7 +1158,7 @@ button.install-cmd {
           <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
         <div class="tool-pricing">
-          <span class="tool-price price-free">Free</span> / <span class="tool-price" style="color:#00ff88">Pro $8/mo</span>
+          <span class="price-tier"><span class="price-pill price-pill-free">FREE</span><span class="price-pill price-pill-pro">PRO $8/mo</span></span>
           <span class="tool-price-note">5 versions free · unlimited Pro</span>
         </div>
         <div class="tool-detail"><div class="tool-detail-inner">
@@ -1162,7 +1188,7 @@ button.install-cmd {
           <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
         <div class="tool-pricing">
-          <span class="tool-price price-free">Free</span> / <span class="tool-price" style="color:#00ff88">Pro $8/mo</span>
+          <span class="price-tier"><span class="price-pill price-pill-free">FREE</span><span class="price-pill price-pill-pro">PRO $8/mo</span></span>
           <span class="tool-price-note">10 audits/mo free · unlimited Pro</span>
         </div>
         <div class="tool-detail"><div class="tool-detail-inner">
@@ -1192,7 +1218,7 @@ button.install-cmd {
           <span class="copy-icon"><svg aria-hidden="true"><use href="#icon-copy"/></svg></span>
         </button>
         <div class="tool-pricing">
-          <span class="tool-price price-free">Free</span> / <span class="tool-price" style="color:#00ff88">Pro $8/mo</span>
+          <span class="price-tier"><span class="price-pill price-pill-free">FREE</span><span class="price-pill price-pill-pro">PRO $8/mo</span></span>
           <span class="tool-price-note">generate + audit free · init, diff, tech-debt Pro</span>
         </div>
         <div class="tool-detail"><div class="tool-detail-inner">
