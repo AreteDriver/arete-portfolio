@@ -405,6 +405,7 @@ a:hover { color: var(--accent-dim); }
   border-radius: var(--radius);
   padding: 24px;
   transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  cursor: pointer;
 }
 
 .tool-card:hover {
@@ -412,6 +413,68 @@ a:hover { color: var(--accent-dim); }
   background: var(--bg-card-hover);
   transform: translateY(-2px);
 }
+
+.tool-card.expanded {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+}
+
+.tool-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, margin 0.35s ease, opacity 0.25s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.tool-card.expanded .tool-detail {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 16px;
+}
+
+.tool-detail-inner {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+.tool-detail h4 {
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tool-detail p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+}
+
+.tool-detail ul {
+  margin: 0 0 10px 0;
+  padding-left: 18px;
+}
+
+.tool-detail li {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+.tool-expand-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.5;
+  text-align: right;
+  margin-top: 8px;
+  transition: opacity 0.2s;
+}
+
+.tool-card.expanded .tool-expand-hint { display: none; }
 
 .tool-header {
   display: flex;
@@ -995,7 +1058,7 @@ button.install-cmd {
     <p class="section-thesis">CLI tools for the AI engineering workflow — cost tracking, prompt ops, context analysis, memory, and agent linting.</p>
     <div class="tools-grid">
 
-      <div class="tool-card">
+      <div class="tool-card" onclick="toggleDetail(this)">
         <div class="tool-header">
           <h3 class="tool-name">agent-lint</h3>
           <div class="tool-links">
@@ -1012,9 +1075,20 @@ button.install-cmd {
           <span class="tool-price price-free">Free</span> / <span class="tool-price" style="color:#00ff88">Pro $8/mo</span>
           <span class="tool-price-note">core linting free · advanced rules Pro</span>
         </div>
+        <div class="tool-detail"><div class="tool-detail-inner">
+          <h4>What it does</h4>
+          <p>Scans your AI agent workflows (YAML, JSON) and estimates how much each run will cost before you execute it. Catches expensive mistakes before they hit your API bill.</p>
+          <h4>Who it helps</h4>
+          <ul>
+            <li>Teams running AI pipelines who need cost visibility</li>
+            <li>Developers building multi-step agent workflows</li>
+            <li>Anyone who's been surprised by an LLM API bill</li>
+          </ul>
+        </div></div>
+        <div class="tool-expand-hint">click to learn more</div>
       </div>
 
-      <div class="tool-card">
+      <div class="tool-card" onclick="toggleDetail(this)">
         <div class="tool-header">
           <h3 class="tool-name">ai-spend</h3>
           <div class="tool-links">
@@ -1031,9 +1105,20 @@ button.install-cmd {
           <span class="tool-price price-free">Free</span> / <span class="tool-price" style="color:#00ff88">Pro $8/mo</span>
           <span class="tool-price-note">3 providers free · unlimited Pro</span>
         </div>
+        <div class="tool-detail"><div class="tool-detail-inner">
+          <h4>What it does</h4>
+          <p>Tracks your AI API spending across providers (OpenAI, Anthropic, Google) in one dashboard. Shows you exactly where your money goes — by model, project, and time period.</p>
+          <h4>Who it helps</h4>
+          <ul>
+            <li>Developers using multiple AI providers who lose track of costs</li>
+            <li>Teams that need to allocate AI spend by project or department</li>
+            <li>Anyone who wants a simple "how much did I spend this month" answer</li>
+          </ul>
+        </div></div>
+        <div class="tool-expand-hint">click to learn more</div>
       </div>
 
-      <div class="tool-card">
+      <div class="tool-card" onclick="toggleDetail(this)">
         <div class="tool-header">
           <h3 class="tool-name">promptctl</h3>
           <div class="tool-links">
@@ -1050,9 +1135,20 @@ button.install-cmd {
           <span class="tool-price price-free">Free</span> / <span class="tool-price" style="color:#00ff88">Pro $8/mo</span>
           <span class="tool-price-note">5 versions free · unlimited Pro</span>
         </div>
+        <div class="tool-detail"><div class="tool-detail-inner">
+          <h4>What it does</h4>
+          <p>A toolkit for working with the Claude API — version your prompts, run code reviews, and analyze documentation. Think of it as "git for your prompts" with built-in quality checks.</p>
+          <h4>Who it helps</h4>
+          <ul>
+            <li>Developers building products on the Claude API</li>
+            <li>Teams that need consistent, versioned prompts across environments</li>
+            <li>Anyone doing prompt engineering who wants to track what works</li>
+          </ul>
+        </div></div>
+        <div class="tool-expand-hint">click to learn more</div>
       </div>
 
-      <div class="tool-card">
+      <div class="tool-card" onclick="toggleDetail(this)">
         <div class="tool-header">
           <h3 class="tool-name">context-hygiene</h3>
           <div class="tool-links">
@@ -1069,9 +1165,20 @@ button.install-cmd {
           <span class="tool-price price-free">Free</span> / <span class="tool-price" style="color:#00ff88">Pro $8/mo</span>
           <span class="tool-price-note">10 audits/mo free · unlimited Pro</span>
         </div>
+        <div class="tool-detail"><div class="tool-detail-inner">
+          <h4>What it does</h4>
+          <p>Analyzes your LLM conversation context window and tells you what's wasting tokens. Finds redundant content, stale context, and bloated system prompts so your AI runs faster and cheaper.</p>
+          <h4>Who it helps</h4>
+          <ul>
+            <li>Anyone hitting context window limits with long conversations</li>
+            <li>Developers optimizing token usage to reduce API costs</li>
+            <li>Teams building chatbots or AI assistants that need lean context</li>
+          </ul>
+        </div></div>
+        <div class="tool-expand-hint">click to learn more</div>
       </div>
 
-      <div class="tool-card">
+      <div class="tool-card" onclick="toggleDetail(this)">
         <div class="tool-header">
           <h3 class="tool-name">anchormd</h3>
           <div class="tool-links">
@@ -1088,9 +1195,20 @@ button.install-cmd {
           <span class="tool-price price-free">Free</span> / <span class="tool-price" style="color:#00ff88">Pro $8/mo</span>
           <span class="tool-price-note">generate + audit free · init, diff, tech-debt Pro</span>
         </div>
+        <div class="tool-detail"><div class="tool-detail-inner">
+          <h4>What it does</h4>
+          <p>Generates a CLAUDE.md file for any codebase — the context file that tells AI coding agents how your project works. Audits existing ones and scores them 0-100. <a href="https://anchormd.dev" target="_blank" rel="noopener">Try the web UI</a> — paste a GitHub URL, get a CLAUDE.md in seconds.</p>
+          <h4>Who it helps</h4>
+          <ul>
+            <li>Anyone using Claude Code, Cursor, or Copilot who wants better AI suggestions</li>
+            <li>Teams onboarding new developers (AI or human) to a codebase</li>
+            <li>Open source maintainers who want contributors to ship faster</li>
+          </ul>
+        </div></div>
+        <div class="tool-expand-hint">click to learn more</div>
       </div>
 
-      <div class="tool-card">
+      <div class="tool-card" onclick="toggleDetail(this)">
         <div class="tool-header">
           <h3 class="tool-name">mcp-manager</h3>
           <div class="tool-links">
@@ -1107,9 +1225,20 @@ button.install-cmd {
           <span class="tool-price price-free">Free</span>
           <span class="tool-price-note">open source</span>
         </div>
+        <div class="tool-detail"><div class="tool-detail-inner">
+          <h4>What it does</h4>
+          <p>Manages MCP (Model Context Protocol) servers across your AI coding tools — Cursor, Claude Code, Windsurf. One config to install, update, and monitor all your MCP servers.</p>
+          <h4>Who it helps</h4>
+          <ul>
+            <li>Developers using multiple AI IDEs who want consistent MCP setup</li>
+            <li>Anyone tired of manually configuring MCP servers per tool</li>
+            <li>Teams standardizing their AI development environment</li>
+          </ul>
+        </div></div>
+        <div class="tool-expand-hint">click to learn more</div>
       </div>
 
-      <div class="tool-card">
+      <div class="tool-card" onclick="toggleDetail(this)">
         <div class="tool-header">
           <h3 class="tool-name">memboot</h3>
           <div class="tool-links">
@@ -1126,6 +1255,17 @@ button.install-cmd {
           <span class="tool-price price-free">Free</span>
           <span class="tool-price-note">open source</span>
         </div>
+        <div class="tool-detail"><div class="tool-detail-inner">
+          <h4>What it does</h4>
+          <p>Gives LLMs persistent memory with zero infrastructure. Your AI agent remembers context across sessions — user preferences, project state, past decisions — stored as simple files. No database, no server, no setup.</p>
+          <h4>Who it helps</h4>
+          <ul>
+            <li>Developers building AI assistants that need to remember things</li>
+            <li>Anyone who wants their AI coding agent to recall prior conversations</li>
+            <li>Teams that need lightweight, file-based memory without Redis or Postgres</li>
+          </ul>
+        </div></div>
+        <div class="tool-expand-hint">click to learn more</div>
       </div>
 
     </div>
@@ -1555,6 +1695,12 @@ window.si = window.si || function () { (window.siq = window.siq || []).push(argu
 <script defer src="/_vercel/speed-insights/script.js"></script>
 
 <script>
+function toggleDetail(card) {
+  // Don't toggle if clicking the install command or a link
+  if (event.target.closest('.install-cmd, a, button')) return;
+  card.classList.toggle('expanded');
+}
+
 function copyInstall(el) {
   const text = el.querySelector('code').textContent;
   navigator.clipboard.writeText(text).then(function() {
