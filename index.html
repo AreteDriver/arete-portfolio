@@ -160,11 +160,19 @@ a:hover { color: var(--accent-dim); }
 /* Card pricing footer */
 .tool-pricing {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  gap: 6px;
   margin-top: 14px;
   padding-top: 14px;
   border-top: 1px solid var(--border);
+}
+
+.tool-price-note {
+  width: 100%;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  opacity: 0.7;
 }
 
 .tool-price {
@@ -202,11 +210,6 @@ a:hover { color: var(--accent-dim); }
 .price-pill-pro {
   background: rgba(77,201,246,0.12);
   color: #4dc9f6;
-}
-
-.tool-price-note {
-  font-size: 0.75rem;
-  color: var(--text-muted);
 }
 
 /* Bundle card */
