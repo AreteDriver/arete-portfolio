@@ -40,7 +40,7 @@ arete-portfolio/
 2. **Flagship Projects** (`#flagships`) — Animus, BenchGoblins, Quorum
 3. **Hackathon Projects** (`#hackathons`) — WatchTower, Frontier Tribe OS, Monolith (EVE Frontier / Sui blockchain)
 4. **Case Studies** (`#case-studies`) — anchormd deep-dive + 9 project cards (BenchGoblins, Gatekeeper, Animus, Convergent, Dossier, LikX, Argus, G13, Overwatch, Fleet Monitor)
-5. **Arcade** (`#arcade`) — Rebellion (Rust/Bevy WASM)
+5. **Arcade** (`#arcade`) — Cytogenesis (Next.js + d3 cellular-automation roguelike), Rebellion (Rust/Bevy WASM)
 6. **Stats Bar** — 37,000+ tests, 7 CLI tools, 8 live systems, 3 hackathon builds
 
 ## Coding Standards
