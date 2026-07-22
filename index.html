@@ -1165,7 +1165,6 @@ button.install-cmd {
           <h3 class="tool-name">promptctl</h3>
           <div class="tool-links">
             <a href="https://pypi.org/project/promptctlai/" target="_blank" rel="noopener" class="badge">v0.3.0</a>
-            <a href="https://github.com/AreteDriver/promptctl" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
           </div>
         </div>
         <p class="tool-desc">Claude API toolkit — prompt engineering + code review + doc intelligence <span class="test-count">330 tests</span></p>
@@ -1250,12 +1249,61 @@ button.install-cmd {
         <div class="tool-expand-hint">click to learn more</div>
       </div>
 
+      <div class="tool-card" onclick="toggleDetail(this)">
+        <div class="tool-header">
+          <h3 class="tool-name">azure-ops-mcp</h3>
+          <div class="tool-links">
+            <a href="https://github.com/AreteDriver/azure-ops-mcp" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
+          </div>
+        </div>
+        <p class="tool-desc">Azure Operations MCP Server — persistent memory, self-improving detection rules, cost-aware SRE tooling</p>
+        <div class="tool-pricing">
+          <span class="price-tier"><span class="price-pill price-pill-free">FREE</span><span class="price-pill price-pill-pro">PRO</span></span>
+          <span class="tool-price-note">9 tools free · 4 Pro features</span>
+        </div>
+        <div class="tool-detail"><div class="tool-detail-inner">
+          <h4>What it does</h4>
+          <p>An MCP server that gives AI assistants operational superpowers over Azure infrastructure. 13 tools covering resource inventory, cost analysis, incident detection, and remediation. ChromaDB persistent memory and self-improving detection rules that learn from outcomes.</p>
+          <h4>Who it helps</h4>
+          <ul>
+            <li>SREs managing Azure infrastructure who want AI-assisted operations</li>
+            <li>Teams that need cost-tracked execution with budget awareness</li>
+            <li>Anyone building MCP servers that need persistent state and learning rules</li>
+          </ul>
+        </div></div>
+        <div class="tool-expand-hint">click to learn more</div>
+      </div>
+
+      <div class="tool-card" onclick="toggleDetail(this)">
+        <div class="tool-header">
+          <h3 class="tool-name">vercel-fleet</h3>
+          <div class="tool-links">
+            <a href="https://github.com/AreteDriver/vercel-fleet" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true"><use href="#icon-github"/></svg></a>
+          </div>
+        </div>
+        <p class="tool-desc">Cross-project Vercel analytics rollup — traffic, deploys, dark projects, bot-filtered referrers</p>
+        <div class="tool-pricing">
+          <span class="tool-price price-free">Free</span>
+          <span class="tool-price-note">open source · optional MCP server</span>
+        </div>
+        <div class="tool-detail"><div class="tool-detail-inner">
+          <h4>What it does</h4>
+          <p>Vercel's native UI is per-project — vercel-fleet rolls everything up across your entire fleet. One terminal table showing traffic, deploys, dark (no-analytics) projects, and bot-filtered referrers. Local SQLite snapshot with systemd-user timer for freshness.</p>
+          <h4>Who it helps</h4>
+          <ul>
+            <li>Developers with multiple Vercel projects who need fleet-wide visibility</li>
+            <li>Teams managing deploy health across a portfolio of sites</li>
+            <li>Anyone who wants to filter scraper noise from real referrer data</li>
+          </ul>
+        </div></div>
+        <div class="tool-expand-hint">click to learn more</div>
+      </div>
 
     </div>
 
     <div class="bundle-card">
       <h3 class="bundle-title">Developer Tools</h3>
-      <p class="bundle-desc">agent-lint · ai-spend · promptctl · context-hygiene · mcp-manager</p>
+      <p class="bundle-desc">agent-lint · ai-spend · promptctl · context-hygiene · mcp-manager · azure-ops-mcp · vercel-fleet</p>
       <div class="bundle-links">
         <a href="https://github.com/AreteDriver" target="_blank" rel="noopener" class="bundle-btn bundle-btn-primary">View on GitHub</a>
         <a href="https://pypi.org/user/AreteDriver/" target="_blank" rel="noopener" class="bundle-btn bundle-btn-secondary">PyPI Packages</a>
@@ -1297,14 +1345,13 @@ button.install-cmd {
       <div class="flagship-card">
         <div class="flagship-header">
           <h3 class="flagship-name">Animus Mind</h3>
-          <a href="https://github.com/AreteDriver/animus-mind" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true" style="width:22px;height:22px;fill:currentColor"><use href="#icon-github"/></svg></a>
+          <span class="case-card-live" style="background:#8b5cf6">UPSTREAMED</span>
         </div>
-        <p class="flagship-desc">v2.3 Mind-class architecture — bitemporal memory core (valid-time / transaction-time), adversarial test harness, deterministic quality scoring, Architect Citizen for autonomous improvement proposals. The reasoning layer behind Animus.</p>
+        <p class="flagship-desc">Mind-class architecture exploration — bitemporal memory core (valid-time / transaction-time), adversarial test harness, deterministic quality scoring, Architect Citizen for autonomous improvement proposals. Core modules (DurableObjectStore, PolicyDecisionPoint) upstreamed into Animus v2.3.</p>
         <div class="flagship-stats">
           <span class="flagship-stat"><strong>172</strong> files</span>
           <span class="flagship-stat"><strong>179</strong> tests</span>
-          <span class="flagship-stat"><strong>Public</strong> repo</span>
-          <span class="flagship-stat"><strong>MIT</strong> license</span>
+          <span class="flagship-stat"><strong>Merged</strong> into Animus</span>
         </div>
       </div>
 
@@ -1318,6 +1365,19 @@ button.install-cmd {
           <span class="flagship-stat"><strong>13</strong> templates</span>
           <span class="flagship-stat"><strong>Crucible</strong> + LCK</span>
           <span class="flagship-stat"><strong>ADL</strong> logging</span>
+        </div>
+      </div>
+
+      <div class="flagship-card">
+        <div class="flagship-header">
+          <h3 class="flagship-name">Aurora Arcology</h3>
+          <a href="https://github.com/AreteDriver/aurora-arcology" target="_blank" rel="noopener" class="gh-link" aria-label="GitHub"><svg aria-hidden="true" style="width:22px;height:22px;fill:currentColor"><use href="#icon-github"/></svg></a>
+        </div>
+        <p class="flagship-desc">Investigation-board framework for narrative universes. First instance maps EVE Online lore through a <em>Wire</em>-style corkboard — Lester Freamon's red string between photographs is the product. Drizzle ORM, SQLite, D3 force simulation, and a 56-node seeded ontology with curator-driven claim validation.</p>
+        <div class="flagship-stats">
+          <span class="flagship-stat"><strong>165</strong> files</span>
+          <span class="flagship-stat"><strong>Next.js</strong> + Drizzle</span>
+          <span class="flagship-stat"><strong>MIT</strong> license</span>
         </div>
       </div>
 
@@ -1376,12 +1436,12 @@ button.install-cmd {
         <p class="case-card-problem">Document analysis requires cloud dependencies</p>
         <p class="case-card-solution">Local-first document intelligence — NER, classification, OCR, forensics timeline, entity graph analysis, and full-text search (FTS5). Zero cloud dependencies. Everything runs on your machine.</p>
         <div class="case-card-metrics">
-          <div class="case-card-metric"><strong>905</strong><span>tests</span></div>
+          <div class="case-card-metric"><strong>1,055</strong><span>tests</span></div>
           <div class="case-card-metric"><strong>NER</strong><span>+ OCR</span></div>
           <div class="case-card-metric"><strong>SQLite</strong><span>FTS5</span></div>
         </div>
         <div class="case-card-links">
-          <a href="https://github.com/AreteDriver/Dossier" target="_blank" rel="noopener" class="case-card-link">GitHub (archived)</a>
+          <a href="https://github.com/AreteDriver/Dossier-legacy" target="_blank" rel="noopener" class="case-card-link">GitHub (archived)</a>
         </div>
       </div>
 
@@ -1405,6 +1465,40 @@ button.install-cmd {
         </div>
       </div>
 
+      <div class="case-card">
+        <div class="case-card-header">
+          <h3 class="case-card-name">Cytogenesis</h3>
+          <span class="case-card-live">LIVE</span>
+        </div>
+        <p class="case-card-problem">Cellular-automata roguelike needs performant rendering and emergent gameplay</p>
+        <p class="case-card-solution">Next.js 16 + TypeScript + Canvas 2D roguelike with custom velocity integrator, quadtree spatial indexing for 500–1,000 free agents, and force-link edge bonding. Two CA layers (environmental + trait) produce emergent abilities. Live at <a href="https://cytogenesis.vercel.app" target="_blank" rel="noopener">cytogenesis.vercel.app</a>.</p>
+        <div class="case-card-metrics">
+          <div class="case-card-metric"><strong>80</strong><span>files</span></div>
+          <div class="case-card-metric"><strong>Canvas</strong><span>2D + d3</span></div>
+          <div class="case-card-metric"><strong>Vitest</strong><span>+ Playwright</span></div>
+        </div>
+        <div class="case-card-links">
+          <a href="https://github.com/AreteDriver/cytogenesis" target="_blank" rel="noopener" class="case-card-link">GitHub</a>
+          <a href="https://cytogenesis.vercel.app" target="_blank" rel="noopener" class="case-card-link">Live Site</a>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-header">
+          <h3 class="case-card-name">Aurora Arcology</h3>
+          <span class="case-card-live">LIVE</span>
+        </div>
+        <p class="case-card-problem">Lore-rich narrative universes need investigation-board tooling</p>
+        <p class="case-card-solution">Investigation-board framework for narrative universes (first instance: EVE Online). Drizzle ORM + SQLite + better-sqlite3, D3 visualization layer, seeded ontology with 56 nodes and 78 connections. Curator-driven claim validation with auto-suggested entity linking.</p>
+        <div class="case-card-metrics">
+          <div class="case-card-metric"><strong>165</strong><span>files</span></div>
+          <div class="case-card-metric"><strong>SQLite</strong><span>+ Drizzle</span></div>
+          <div class="case-card-metric"><strong>Zod</strong><span>+ d3</span></div>
+        </div>
+        <div class="case-card-links">
+          <a href="https://github.com/AreteDriver/aurora-arcology" target="_blank" rel="noopener" class="case-card-link">GitHub</a>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -1432,7 +1526,7 @@ button.install-cmd {
       <span class="stat-label"> core infrastructure tests</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">6</span>
+      <span class="stat-number">7</span>
       <span class="stat-label">MCP servers shipped</span>
     </div>
     <div class="stat-item">
