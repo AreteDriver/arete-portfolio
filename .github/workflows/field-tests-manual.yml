@@ -107,11 +107,30 @@ jobs:
           import json
           from pathlib import Path
           report=json.loads(Path('audit-stdout.json').read_text())
+          if not isinstance(report, dict):
+              raise SystemExit('Analyzer report is not a JSON object')
+          for key in ('total_segments', 'total_tokens', 'tokens_recoverable', 'grade'):
+              if key not in report:
+                  raise SystemExit(f'Missing required analyzer field: {key}')
+          if type(report['total_segments']) is not int or report['total_segments'] <= 0:
+              raise SystemExit('Invalid or empty parse: no segments analyzed')
+          if type(report['total_tokens']) is not int or report['total_tokens'] <= 0:
+              raise SystemExit('Invalid or empty parse: no tokens analyzed')
+          if type(report['tokens_recoverable']) is not int or report['tokens_recoverable'] < 0:
+              raise SystemExit('Invalid recoverable token estimate')
+          if not isinstance(report['grade'], str) or report['grade'] not in ('A','B','C','D','F'):
+              raise SystemExit('Invalid grade')
           print('report_valid_json=true')
           print('report_fields='+','.join(sorted(report.keys())))
           for key in ('total_segments','total_tokens','tokens_recoverable','staleness_score','grade'):
               if key in report and isinstance(report[key],(str,int,float)):
                   print(f'{key}={report[key]}')
+          for key in ('contradictions','deadweight','compression_candidates','staleness_results'):
+              value = report.get(key)
+              if not isinstance(value, list):
+                  raise SystemExit(f'Missing or malformed findings collection: {key}')
+              print(f'{key}_count={len(value)}')
+          print('NOTE: heuristic finding counts are unverified; raw report withheld')
           PY
           echo 'Raw findings withheld pending manual verification.'
       - name: Delete unreviewed raw output
