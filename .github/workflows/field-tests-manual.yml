@@ -49,9 +49,9 @@ jobs:
         run: |
           set -euo pipefail
           if [[ "$EVENT" == "push" ]]; then
-            repo='anthropics/claude-code'
-            sha='49b8c35f8c57493c2f0eba1429ccaa9638ab8712'
-            path='CLAUDE.md'
+            repo='browser-use/browser-use'
+            sha='aa093a843da5edbf323c0b4145c9b6a0db3ecde8'
+            path='AGENTS.md'
           else
             repo="$REQUEST_REPO"
             sha="$REQUEST_SHA"
