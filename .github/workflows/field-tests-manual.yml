@@ -153,6 +153,13 @@ jobs:
               if not isinstance(a,list) or not isinstance(b,list) or len(a)!=len(b):
                   raise SystemExit(f'Reproduction mismatch in {key} count')
               print(f'reproduced_{key}_count={len(a)}')
+          import hashlib
+          def fingerprints(items):
+              return sorted(hashlib.sha256(json.dumps(item,sort_keys=True,ensure_ascii=False,separators=(',',':')).encode()).hexdigest() for item in items)
+          for key in ('contradictions','deadweight','compression_candidates','staleness_results'):
+              if fingerprints(first[key]) != fingerprints(second[key]):
+                  raise SystemExit(f'Reproduction mismatch in {key} content fingerprints')
+              print(f'reproduced_{key}_fingerprints_match=true')
           print('same_environment_repeat=true')
           print('NOTE: repeat run is same-environment reproducibility, not independent validation')
           PY
