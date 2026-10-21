@@ -1,0 +1,83 @@
+name: Field Tests — manual static audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      upstream_repository:
+        description: 'Public owner/repo (allowlisted pilot target)'
+        required: true
+        type: choice
+        options:
+          - anthropics/claude-code
+          - langchain-ai/langgraph
+          - browser-use/browser-use
+          - openai/openai-agents-python
+      upstream_commit:
+        description: 'Full 40-character upstream commit SHA (not a file blob SHA)'
+        required: true
+        type: string
+      input_path:
+        description: 'Static instruction file to audit'
+        required: true
+        type: choice
+        options:
+          - CLAUDE.md
+          - AGENTS.md
+
+permissions:
+  contents: read
+
+jobs:
+  static-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Validate pinned commit
+        env:
+          SHA: ${{ inputs.upstream_commit }}
+        run: |
+          if [[ ! "$SHA" =~ ^[a-fA-F0-9]{40}$ ]]; then
+            echo 'Must supply full 40-character commit SHA' >&2
+            exit 1
+          fi
+      - name: Checkout upstream at exact revision (data only)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.upstream_repository }}
+          ref: ${{ inputs.upstream_commit }}
+          path: upstream
+          persist-credentials: false
+          submodules: false
+          lfs: false
+      - name: Setup isolated Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install analyzer
+        run: python -m pip install --disable-pip-version-check context-hygiene
+      - name: Audit static document without invoking upstream code
+        env:
+          TARGET: ${{ inputs.input_path }}
+          REPO: ${{ inputs.upstream_repository }}
+          SHA: ${{ inputs.upstream_commit }}
+        run: |
+          set -uo pipefail
+          test -f "upstream/$TARGET"
+          echo "upstream=$REPO"
+          echo "commit=$SHA"
+          python -m pip show context-hygiene | grep -E '^(Name|Version):'
+          sha256sum "upstream/$TARGET"
+          set +e
+          ctx-hygiene audit "upstream/$TARGET" > audit-stdout.txt 2> audit-stderr.txt
+          result=$?
+          set -e
+          echo "audit_exit_code=$result"
+          # Do not publish raw tool output without human redaction and review.
+          # Preserve only the exit status and file hash in the job log.
+          echo "Result requires manual review. No external findings are automatically published."
+          if [[ "$result" -ne 0 ]]; then
+            echo "Analyzer returned nonzero status; investigate before classifying."
+          fi
+      - name: Remove local unreviewed output
+        if: always()
+        run: rm -f audit-stdout.txt audit-stderr.txt
