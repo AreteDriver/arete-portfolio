@@ -1,0 +1,151 @@
+{
+  "status": "PASS",
+  "utc": "2026-10-21T06:00:06.270763+00:00",
+  "environment": {
+    "system": "Linux",
+    "release": "7.0.0-38-generic",
+    "machine": "x86_64",
+    "python": "3.14.4",
+    "os": "Ubuntu 26.04.1 LTS",
+    "isolated_venv": true
+  },
+  "package": {
+    "version": "0.3.2",
+    "tiktoken_present": false,
+    "telemetry_enabled": false
+  },
+  "published_wheel": {
+    "url": "https://files.pythonhosted.org/packages/07/f0/e2fb535c3904e256e6b3b9c39e172591dfac80716ce9f95ecbef855d09e9/context_hygiene-0.3.2-py3-none-any.whl",
+    "archive_info": {
+      "hash": "sha256=201684e2562e45cbf7d625a9000a962e8f86089cf5aaa2034a186619447cdef9",
+      "hashes": {
+        "sha256": "201684e2562e45cbf7d625a9000a962e8f86089cf5aaa2034a186619447cdef9"
+      }
+    }
+  },
+  "source_commit": "aa093a843da5edbf323c0b4145c9b6a0db3ecde8",
+  "input_sha256": "a88c42c6635b09b590108a5e1a161886f3dcedab824e69a080d5de8ccd575ab5",
+  "metrics": {
+    "total_segments": 113,
+    "total_tokens": 6008,
+    "tokens_recoverable": 277,
+    "grade": "A",
+    "staleness_score": 0.13
+  },
+  "counts": {
+    "deadweight": 5,
+    "contradictions": 0,
+    "compression_candidates": 0,
+    "staleness_results": 113
+  },
+  "findings": [
+    {
+      "index": 37,
+      "earlier_index": 32,
+      "exact_duplicate": true,
+      "text_sha256": "df06220be635f1282fdbd7b378319caca5fe8ea0be0747774912a8b55444add7",
+      "words": 21,
+      "independent_word_proxy": 27,
+      "reported_tokens": 27,
+      "reason_matches": true
+    },
+    {
+      "index": 38,
+      "earlier_index": 33,
+      "exact_duplicate": true,
+      "text_sha256": "88745f2b2b32820a924109c1863559d07b44c7f72dad4b830e7cb188ea5e2f11",
+      "words": 70,
+      "independent_word_proxy": 91,
+      "reported_tokens": 91,
+      "reason_matches": true
+    },
+    {
+      "index": 39,
+      "earlier_index": 34,
+      "exact_duplicate": true,
+      "text_sha256": "c2ecd48dd2a021ad3006929c2dab5d39633571902f8767903683a2ccc7c0c7b7",
+      "words": 84,
+      "independent_word_proxy": 109,
+      "reported_tokens": 109,
+      "reason_matches": true
+    },
+    {
+      "index": 40,
+      "earlier_index": 35,
+      "exact_duplicate": true,
+      "text_sha256": "2578dd26ce3d08d8949844fcf7c9d7483297d3888e58072b88c332815a8adf6e",
+      "words": 24,
+      "independent_word_proxy": 31,
+      "reported_tokens": 31,
+      "reason_matches": true
+    },
+    {
+      "index": 41,
+      "earlier_index": 36,
+      "exact_duplicate": true,
+      "text_sha256": "8fd10e4e5ff636a74bb8535b96614ab89182ea28dd74b1f53f4e007f67c9b6e3",
+      "words": 15,
+      "independent_word_proxy": 19,
+      "reported_tokens": 19,
+      "reason_matches": true
+    }
+  ],
+  "checks": {
+    "version": true,
+    "telemetry_disabled": true,
+    "source_hash": true,
+    "segments": true,
+    "indices": true,
+    "recoverable": true,
+    "duplicates": true,
+    "reasons": true,
+    "per_segment_estimates": true,
+    "proxy_total": true,
+    "no_telemetry_db": true
+  },
+  "hashes": {
+    "audit.out": "24c44eaa71405a422d2ea8ba9510678f9baca42e866e70e4bea1da10173c992e",
+    "audit.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "freeze.out": "1d470971b648ef4db868acc2b8f1c9b05c054c50363d6342f9644d3073907243",
+    "install.json": "8da8879a60e51a76d27216a994fdd1fe36cf285777e8b7a091f4a3f89f70550f",
+    "independent-tokenizer.out": "391f6040460ebb3b3945c6beabadd9e58f952d574ca9ca21fc3fc31a7c265735"
+  },
+  "limitations": [
+    "Cross-environment reproducibility and exact duplication verified only for this pinned input; no general accuracy or behavior-preserving removal claim.",
+    "Raw reports remain private on Stheno; no upstream edit or case-study publication."
+  ],
+  "independent_tokenizer": {
+    "version": "0.14.0",
+    "encoding": "cl100k_base",
+    "per_segment": [
+      36,
+      118,
+      138,
+      59,
+      43
+    ],
+    "sum_per_segment": 394,
+    "joined_with_blank_lines": 396
+  },
+  "installed_parser": {
+    "installed_parser_segments": 113
+  },
+  "discrepancies": [
+    "No discrepancy against baseline aggregate or five finding locators/reasons.",
+    "277 is a word-proxy estimate; independent cl100k_base token counts are reported separately and do not equal the proxy.",
+    "Python 3.14.4 used instead of the protocol example Python 3.11; published package declares Python >=3.10."
+  ],
+  "implementation_hashes": {
+    "models.py": "ba5be89cd49ffba30aa663dfc8ba55b57b12d3392c4ebea7f9a8893b43835f4e",
+    "parsers/generic.py": "cd65f425d7d1a841fab832a3fa162fd4d77c4fec76d60a7a370a7b9d0886b7d3",
+    "analyzers/deadweight.py": "88c8efa79b6a063a146870d26c1e169cf5cdf702927bb879d3d74141d8705561",
+    "telemetry.py": "37a9cf78da5ff70671d3da72d7321d9ff444f14ee0f8d04bc0f613a2057a7d63"
+  },
+  "final_verification": {
+    "independent_text_matches_installed_parser": true,
+    "input_hash_unchanged": true,
+    "private_dir_mode": "0700",
+    "private_report_mode": "0600",
+    "telemetry_db_absent": true
+  }
+}

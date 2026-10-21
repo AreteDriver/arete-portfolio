@@ -1,6 +1,6 @@
 # FT-CH-002 — manual review and reproduction
 
-**Status:** G1 execution verified; same-environment repeatability verified; G2 independent published-package reproduction pending; G3 source-level duplicate review completed (token estimates unverified); G4 publication blocked.
+**Status:** G1 execution verified; same-environment repeatability verified; G2 independent published-package reproduction passed on Stheno; G3 five exact duplicates and analyzer reasons verified, with independent token measurements recorded (human sign-off pending); G4 case-study publication blocked.
 
 - Source: https://github.com/browser-use/browser-use
 - Revision: `aa093a843da5edbf323c0b4145c9b6a0db3ecde8`
@@ -41,15 +41,15 @@ Do not commit `report.json` or paste unreviewed raw findings into public CI logs
 
 ## Five-finding review matrix
 
-Complete one row per analyzer deadweight candidate after opening `report.json`. Use the tool's exact finding locator or quoted text to map each candidate back to the pinned file. If the report lacks a reliable locator, record **inconclusive**, not a guess.
+Updated from the private Stheno report and independent exact-text comparisons. The rationale column now records verified analyzer reason strings. Word-proxy estimates and independent cl100k_base measurements are distinct; see the [Stheno reproduction](FT-CH-002-STHENO-REPRODUCTION.md). Exact duplication does not establish that removal preserves intended behavior. Human sign-off remains pending.
 
 | Candidate | Source line(s) | Tool's rationale | Necessary context or cross-reference | Reviewer classification | Token estimate | Decision |
 |---|---|---|---|---|---|---|
-| DW-01 | 380–386 | Exact duplicate of segment 32 | Earlier identical Agent History block | Confirmed exact duplication | Not independently measured | No upstream edit |
-| DW-02 | 387–397 | Exact duplicate of segment 33 | Earlier identical access methods block | Confirmed exact duplication | Not independently measured | No upstream edit |
-| DW-03 | 398–408 | Exact duplicate of segment 34 | Earlier identical analysis methods block | Confirmed exact duplication | Not independently measured | No upstream edit |
-| DW-04 | 409–414 | Exact duplicate of segment 35 | Earlier identical structured-output example | Confirmed exact duplication | Not independently measured | No upstream edit |
-| DW-05 | 415–419 | Exact duplicate of segment 36 | Earlier identical Structured Output block | Confirmed exact duplication | Not independently measured | No upstream edit |
+| DW-01 | 380–386 | `exact duplicate of segment 32` | Earlier identical Agent History block | Confirmed exact duplication | 27 word proxy; 36 cl100k_base | No upstream edit |
+| DW-02 | 387–397 | `exact duplicate of segment 33` | Earlier identical access methods block | Confirmed exact duplication | 91 word proxy; 118 cl100k_base | No upstream edit |
+| DW-03 | 398–408 | `exact duplicate of segment 34` | Earlier identical analysis methods block | Confirmed exact duplication | 109 word proxy; 138 cl100k_base | No upstream edit |
+| DW-04 | 409–414 | `exact duplicate of segment 35` | Earlier identical structured-output example | Confirmed exact duplication | 31 word proxy; 59 cl100k_base | No upstream edit |
+| DW-05 | 415–419 | `exact duplicate of segment 36` | Earlier identical Structured Output block | Confirmed exact duplication | 19 word proxy; 43 cl100k_base | No upstream edit |
 
 Review each against these questions: Is it duplicated verbatim? Is it restating a requirement for a different scope? Does removing it change behavior or compliance? Is it a useful reminder rather than deadweight? Is the token estimate grounded in actual text? Classify as **confirmed redundancy**, **false positive**, or **inconclusive** and record rationale.
 
@@ -60,14 +60,14 @@ If proposing an edit, prepare a minimal diff in a disposable copy and compare be
 G2 requires matching input hash, tool version, nonempty parser output and matching candidate counts. G3 requires a completed five-row matrix and human inspection. G4 requires attribution, license/privacy review and explicit limitations. Keep both clean and positive tests in the evidence ledger.
 
 
-## Candidate locator evidence (2026-10-21)
+## Candidate locator evidence (2026-10-21, historical checkpoint)
 
 Run: https://github.com/AreteDriver/arete-portfolio/actions/runs/39545957085/job/119044056869
 
-The five `deadweight` finding objects contain `reason`, `segment_index`, and `tokens_recoverable`. The workflow disclosed only allowlisted numeric locators: **segment indices 37, 38, 39, 40, and 41**, in reported order. Same-environment finding-content fingerprints matched. These indices are analyzer segments, **not source-file line numbers**; mapping requires the analyzer segmentation rules or a locally reviewed report. No finding text or reasons have been manually evaluated. G2 independent reproduction and G3 manual classification remain pending; publication remains blocked.
+The five `deadweight` finding objects contain `reason`, `segment_index`, and `tokens_recoverable`. The workflow disclosed only allowlisted numeric locators: **segment indices 37, 38, 39, 40, and 41**, in reported order. Same-environment finding-content fingerprints matched. These indices are analyzer segments, **not source-file line numbers**; mapping requires the analyzer segmentation rules or a locally reviewed report. At this checkpoint, finding text and reasons had not been evaluated and independent reproduction remained pending. The subsequent Stheno run below supersedes that reproduction status; human sign-off and case-study publication remain pending.
 
 
-## Source-level duplicate verification (2026-10-21)
+## Source-level duplicate verification (2026-10-21, before Stheno reproduction)
 
 Inspected `AreteDriver/context-hygiene` generic Markdown parser (default branch) and the pinned `browser-use/browser-use` `AGENTS.md` at `aa093a843da5edbf323c0b4145c9b6a0db3ecde8`. The parser splits markdown sections on headings (`#` through `######`) into zero-based SYSTEM segments. Reconstructing that segmentation yielded **113 segments**, matching the audited count. Exact string comparison confirmed five duplicates:
 
@@ -79,9 +79,19 @@ Inspected `AreteDriver/context-hygiene` generic Markdown parser (default branch)
 | 40 | 35 | 409–414 | Structured output (when using output_model_schema) |
 | 41 | 36 | 415–419 | Structured Output |
 
-**Reviewer conclusion:** All five flagged segments are exact-text duplicates of preceding segments in this pinned file. This confirms duplicate detection for these five cases; it does not verify token savings independently, approve upstream edits, or demonstrate effectiveness on other repositories. The current source inspection uses the analyzer repository's default-branch parser, not a verified installed `0.3.2` source artifact; G2 independent installed-version reproduction remains pending. No raw finding report was published.
+**Reviewer conclusion:** All five flagged segments are exact-text duplicates of preceding segments in this pinned file. This confirms duplicate detection for these five cases; it does not verify token savings independently, approve upstream edits, or demonstrate effectiveness on other repositories. That initial source inspection used the analyzer repository's default-branch parser. The subsequent Stheno run verified the installed published `0.3.2` parser and completed G2. No raw finding report was published.
 
+
+## Independent Stheno reproduction (2026-10-21)
+
+The [sanitized reproduction summary](FT-CH-002-STHENO-REPRODUCTION.md) and [allowlisted results](FT-CH-002-STHENO-RESULTS.json) record the completed run on Ubuntu 26.04.1 LTS, Linux 7.0.0-38-generic, x86_64, CPython 3.14.4. A fresh virtual environment installed published `context-hygiene==0.3.2`; the wheel hash and pinned input hash were verified. Telemetry was disabled and analyzer state stayed in the disposable private workspace.
+
+The audit exited 0 with valid JSON and empty stderr: **113 segments; five deadweight findings at indices 37–41; 277 estimated recoverable tokens**. The remaining baseline metrics matched. Each reason string matched `exact duplicate of segment N` for earlier indices 32–36. Independent text extraction and the installed parser agreed on all five content hashes and exact duplication.
+
+Independent word-proxy arithmetic reproduced **277** (`27 + 91 + 109 + 31 + 19`). A separate tokenizer environment using tiktoken 0.14.0 and cl100k_base measured **394** tokens summed per segment (`36 + 118 + 138 + 59 + 43`), or **396** when the five texts are joined with blank lines. The baseline analyzer environment did not contain tiktoken. Thus 277 is a reproduced heuristic estimate, not a measured model-token saving.
 
 ## Review qualifications
 
-The five classifications above are based on independent exact-text comparison of the pinned public input after reconstructing the documented Markdown segmentation. They do **not** quote the raw analyzer `reason` strings, which remain withheld. The rationale column therefore records reviewer reasoning, not the analyzer's exact rationale. `277` recoverable tokens is the analyzer's estimate and has not been independently measured. The repeated block might be intentional for separate readers or contexts; no upstream removal is authorized by this review. An attempt to fetch the published `context-hygiene==0.3.2` package in a separate execution environment was blocked by unavailable package-index networking; it is not an independent reproduction result.
+The earlier package-index networking failure is historical; this Stheno run successfully fetched the published package. All five analyzer reasons were inspected through exact-string checks against the private report, and all duplicate pairs were independently compared. The completed matrix records those technical checks; the protocol's human G3 sign-off remains pending.
+
+Repetition may be intentional for separate readers or contexts. No upstream removal is authorized, no behavior-preserving fix is claimed, and this single pinned input does not demonstrate general analyzer accuracy. Raw reports remain private on Stheno; only sanitized evidence is proposed for this repository. G4 case-study publication remains blocked.
