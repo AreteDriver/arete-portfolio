@@ -81,7 +81,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install versioned analyzer
-        run: python -m pip install 'context-hygiene==0.3.3'
+        run: python -m pip install 'context-hygiene==0.3.2'
       - name: Audit static file and record non-sensitive metadata
         env:
           TARGET: ${{ steps.source.outputs.path }}
