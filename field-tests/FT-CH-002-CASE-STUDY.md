@@ -99,3 +99,21 @@ Credit for Browser Use and its documentation belongs to its contributors. The pi
 The draft includes no raw report, complete source excerpt, personal account path, network address or credential material. No security vulnerability was identified by this duplicate check, and maintainer outreach is not proposed. Temporary private evidence on Stheno was rehashed during review; its location is withheld. A checksum identifies evidence but does not make the private report publicly verifiable or guarantee retention.
 
 [PR #19](https://github.com/AreteDriver/arete-portfolio/pull/19) contains the sanitized reproduction evidence and this case study. Human G3 approval is limited to confirmed exact duplication; G4 content approval and explicit repository publication/merge authorization were received on 2026-10-21. This approval does not authorize removing documentation from Browser Use. Website deployment is separate from repository publication.
+
+## Post-fix follow-up: source v0.3.3 (2026-10-21)
+
+A later, separate field validation tested the fence-aware generic parser after [context-hygiene PR #11](https://github.com/AreteDriver/context-hygiene/pull/11) merged. The end-to-end harness added in [PR #12](https://github.com/AreteDriver/context-hygiene/pull/12) passed in [GitHub Actions run 39683604540](https://github.com/AreteDriver/context-hygiene/actions/runs/39683604540), using the **same pinned Browser Use revision and input SHA-256** as the original published-package reproduction. This follow-up ran the installed CLI from repository source labeled **0.3.3** on Python 3.12; it is **not** an independently installed or verified PyPI 0.3.3 wheel, and does not retroactively change the 0.3.2 results above.
+
+| Metric | Original published 0.3.2 | Post-fix source 0.3.3 |
+|---|---:|---:|
+| Parser segments | 113 | 82 |
+| Exact duplicate findings | 5 | 2 |
+| Distinct repeated documentation sections | 2 | 2 |
+| Word-proxy estimated recoverable tokens | 277 | 277 |
+| Total estimated tokens | 6,008 | 6,019 |
+| Grade | A | A |
+| Staleness score | 0.130 | 0.132 |
+
+The corrected parser preserves fenced-code delimiters and no longer interprets Python comments inside fenced examples as Markdown section headings. The original five flagged fragments consolidate into two exact duplicate section pairs, indices **24 → 26** (Agent History) and **25 → 27** (Structured Output). This removes **31 spurious segment boundaries (27.4%)** on this input and three misleading duplicate *fragment* findings, while retaining the two repeated documentation sections. The recoverable-token estimate remains **277** because the same text is duplicated. The 11-token increase in the total word-proxy estimate is a segment-rounding artifact, not added document content or observed runtime cost.
+
+The CI harness verified the upstream SHA-256 before analysis, asserted the expected segment count, exact duplicate pairs, duplicate-finding count, and recoverable-token estimate, and uploaded a sanitized JSON measurements artifact with seven-day retention. [The workflow run](https://github.com/AreteDriver/context-hygiene/actions/runs/39683604540) and [source harness](https://github.com/AreteDriver/context-hygiene/blob/main/scripts/validate_ft_ch_002.py) document the procedure. The validation passed alongside CI, CodeQL and Context Hygiene workflows. This is one pinned-input regression, not an estimate of precision or recall across repositories; it does not demonstrate actual prompt-token savings, downstream agent improvement, or safety outcomes. A representative positive/negative-control cohort remains future work.
