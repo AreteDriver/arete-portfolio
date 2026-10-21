@@ -1,6 +1,6 @@
 # FT-CH-002 — manual review and reproduction
 
-**Status:** G1 execution verified; same-environment repeatability verified; G2 independent published-package reproduction passed on Stheno; G3 five exact duplicates and analyzer reasons verified, with independent token measurements recorded (human sign-off pending); G4 case-study publication blocked.
+**Status:** G1 execution verified; same-environment repeatability verified; G2 independent published-package reproduction passed on Stheno; G3 five exact duplicates and analyzer reasons verified, with independent token measurements recorded (human G3 sign-off received for confirmed exact duplication only); G4 case-study publication blocked.
 
 - Source: https://github.com/browser-use/browser-use
 - Revision: `aa093a843da5edbf323c0b4145c9b6a0db3ecde8`
@@ -64,7 +64,7 @@ G2 requires matching input hash, tool version, nonempty parser output and matchi
 
 Run: https://github.com/AreteDriver/arete-portfolio/actions/runs/39545957085/job/119044056869
 
-The five `deadweight` finding objects contain `reason`, `segment_index`, and `tokens_recoverable`. The workflow disclosed only allowlisted numeric locators: **segment indices 37, 38, 39, 40, and 41**, in reported order. Same-environment finding-content fingerprints matched. These indices are analyzer segments, **not source-file line numbers**; mapping requires the analyzer segmentation rules or a locally reviewed report. At this checkpoint, finding text and reasons had not been evaluated and independent reproduction remained pending. The subsequent Stheno run below supersedes that reproduction status; human sign-off and case-study publication remain pending.
+The five `deadweight` finding objects contain `reason`, `segment_index`, and `tokens_recoverable`. The workflow disclosed only allowlisted numeric locators: **segment indices 37, 38, 39, 40, and 41**, in reported order. Same-environment finding-content fingerprints matched. These indices are analyzer segments, **not source-file line numbers**; mapping requires the analyzer segmentation rules or a locally reviewed report. At this checkpoint, finding text and reasons had not been evaluated and independent reproduction remained pending. The subsequent Stheno run below supersedes that reproduction status; the later human sign-off below supersedes the G3 status; case-study publication remains pending.
 
 
 ## Source-level duplicate verification (2026-10-21, before Stheno reproduction)
@@ -92,6 +92,14 @@ Independent word-proxy arithmetic reproduced **277** (`27 + 91 + 109 + 31 + 19`)
 
 ## Review qualifications
 
-The earlier package-index networking failure is historical; this Stheno run successfully fetched the published package. All five analyzer reasons were inspected through exact-string checks against the private report, and all duplicate pairs were independently compared. The completed matrix records those technical checks; the protocol's human G3 sign-off remains pending.
+The earlier package-index networking failure is historical; this Stheno run successfully fetched the published package. All five analyzer reasons were inspected through exact-string checks against the private report, and all duplicate pairs were independently compared. The completed matrix records those technical checks; the human reviewer subsequently approved G3 for confirmed exact duplication only, as recorded below.
 
 Repetition may be intentional for separate readers or contexts. No upstream removal is authorized, no behavior-preserving fix is claimed, and this single pinned input does not demonstrate general analyzer accuracy. Raw reports remain private on Stheno; only sanitized evidence is proposed for this repository. G4 case-study publication remains blocked.
+
+## Human G3 sign-off — 2026-10-21
+
+Reviewer: AreteDriver, by explicit in-thread confirmation. Approval recorded at 2026-10-21 06:37 UTC against the pinned input and evidence in PR #19 head `029d7a8c74b900f5281716212d21216bac7e0172`. This is a recorded human statement, not a GitHub approving review.
+
+> I inspected the repeated source sections and approve G3 for confirmed exact duplication only. I accept the parser and token-count limitations. This does not approve upstream removal or case-study publication
+
+**Scope:** G3 passed for confirmed exact duplication only. Five parser segments span two repeated documentation sections; three segment boundaries are Python comments inside fenced code. The reviewer accepts those parser limits and the distinction between 277 word-proxy estimated tokens and 394 separately measured cl100k_base tokens. Intentional repetition, behavior-preserving removal, general accuracy and runtime savings remain unassessed. G4 and case-study publication remain pending; no upstream removal is authorized.
