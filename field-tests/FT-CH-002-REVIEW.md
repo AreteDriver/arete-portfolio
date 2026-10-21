@@ -1,6 +1,6 @@
 # FT-CH-002 — manual review and reproduction
 
-**Status:** G1 execution verified; same-environment repeatability verified; G2 independent reproduction pending; G3 finding review pending; G4 publication blocked.
+**Status:** G1 execution verified; same-environment aggregate and finding-content repeatability verified; G2 independent reproduction pending; G3 finding review pending; G4 publication blocked.
 
 - Source: https://github.com/browser-use/browser-use
 - Revision: `aa093a843da5edbf323c0b4145c9b6a0db3ecde8`
@@ -8,6 +8,7 @@
 - Expected SHA-256: `a88c42c6635b09b590108a5e1a161886f3dcedab824e69a080d5de8ccd575ab5`
 - Analyzer: `context-hygiene==0.3.2`
 - First aggregate evidence: https://github.com/AreteDriver/arete-portfolio/actions/runs/39543944466/job/119037751455
+- Finding-content fingerprint repeatability: https://github.com/AreteDriver/arete-portfolio/actions/runs/39545477949/job/119042572435 — two audits within the same job produced identical canonicalized SHA-256 fingerprints for all five deadweight findings and all 113 staleness results; aggregate metrics also matched (113 segments, 6,008 tokens, 277 recoverable, grade A). This confirms same-environment consistency only, not correctness or independent reproduction.
 - Repeatability evidence: https://github.com/AreteDriver/arete-portfolio/actions/runs/39544805338/job/119040438800 — two audits within one job matched on segments (113), tokens (6,008), recoverable tokens (277), staleness (0.13), grade (A), and all finding counts (deadweight 5, contradictions 0, compression 0, staleness 113). Log marker: `same_environment_repeat=true`. This does **not** constitute independent reproduction or manual verification.
 - Reported: 113 segments, 6,008 tokens, 277 estimated recoverable tokens, five deadweight candidates, zero contradictions, zero compression candidates, staleness score 0.13, grade A.
 
