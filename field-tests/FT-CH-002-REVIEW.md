@@ -58,3 +58,10 @@ If proposing an edit, prepare a minimal diff in a disposable copy and compare be
 ## Reproduction acceptance
 
 G2 requires matching input hash, tool version, nonempty parser output and matching candidate counts. G3 requires a completed five-row matrix and human inspection. G4 requires attribution, license/privacy review and explicit limitations. Keep both clean and positive tests in the evidence ledger.
+
+
+## Candidate locator evidence (2026-10-21)
+
+Run: https://github.com/AreteDriver/arete-portfolio/actions/runs/39545957085/job/119044056869
+
+The five `deadweight` finding objects contain `reason`, `segment_index`, and `tokens_recoverable`. The workflow disclosed only allowlisted numeric locators: **segment indices 37, 38, 39, 40, and 41**, in reported order. Same-environment finding-content fingerprints matched. These indices are analyzer segments, **not source-file line numbers**; mapping requires the analyzer segmentation rules or a locally reviewed report. No finding text or reasons have been manually evaluated. G2 independent reproduction and G3 manual classification remain pending; publication remains blocked.
