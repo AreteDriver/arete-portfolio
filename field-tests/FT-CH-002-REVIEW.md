@@ -1,6 +1,6 @@
 # FT-CH-002 — manual review and reproduction
 
-**Status:** G1 execution verified; same-environment aggregate and finding-content repeatability verified; G2 independent reproduction pending; G3 finding review pending; G4 publication blocked.
+**Status:** G1 execution verified; same-environment repeatability verified; G2 independent published-package reproduction pending; G3 source-level duplicate review completed (token estimates unverified); G4 publication blocked.
 
 - Source: https://github.com/browser-use/browser-use
 - Revision: `aa093a843da5edbf323c0b4145c9b6a0db3ecde8`
@@ -45,11 +45,11 @@ Complete one row per analyzer deadweight candidate after opening `report.json`. 
 
 | Candidate | Source line(s) | Tool's rationale | Necessary context or cross-reference | Reviewer classification | Token estimate | Decision |
 |---|---|---|---|---|---|---|
-| DW-01 | Pending | Pending | Pending | Unreviewed | Pending | Pending |
-| DW-02 | Pending | Pending | Pending | Unreviewed | Pending | Pending |
-| DW-03 | Pending | Pending | Pending | Unreviewed | Pending | Pending |
-| DW-04 | Pending | Pending | Pending | Unreviewed | Pending | Pending |
-| DW-05 | Pending | Pending | Pending | Unreviewed | Pending | Pending |
+| DW-01 | 380–386 | Exact duplicate of segment 32 | Earlier identical Agent History block | Confirmed exact duplication | Not independently measured | No upstream edit |
+| DW-02 | 387–397 | Exact duplicate of segment 33 | Earlier identical access methods block | Confirmed exact duplication | Not independently measured | No upstream edit |
+| DW-03 | 398–408 | Exact duplicate of segment 34 | Earlier identical analysis methods block | Confirmed exact duplication | Not independently measured | No upstream edit |
+| DW-04 | 409–414 | Exact duplicate of segment 35 | Earlier identical structured-output example | Confirmed exact duplication | Not independently measured | No upstream edit |
+| DW-05 | 415–419 | Exact duplicate of segment 36 | Earlier identical Structured Output block | Confirmed exact duplication | Not independently measured | No upstream edit |
 
 Review each against these questions: Is it duplicated verbatim? Is it restating a requirement for a different scope? Does removing it change behavior or compliance? Is it a useful reminder rather than deadweight? Is the token estimate grounded in actual text? Classify as **confirmed redundancy**, **false positive**, or **inconclusive** and record rationale.
 
@@ -80,3 +80,8 @@ Inspected `AreteDriver/context-hygiene` generic Markdown parser (default branch)
 | 41 | 36 | 415–419 | Structured Output |
 
 **Reviewer conclusion:** All five flagged segments are exact-text duplicates of preceding segments in this pinned file. This confirms duplicate detection for these five cases; it does not verify token savings independently, approve upstream edits, or demonstrate effectiveness on other repositories. The current source inspection uses the analyzer repository's default-branch parser, not a verified installed `0.3.2` source artifact; G2 independent installed-version reproduction remains pending. No raw finding report was published.
+
+
+## Review qualifications
+
+The five classifications above are based on independent exact-text comparison of the pinned public input after reconstructing the documented Markdown segmentation. They do **not** quote the raw analyzer `reason` strings, which remain withheld. The rationale column therefore records reviewer reasoning, not the analyzer's exact rationale. `277` recoverable tokens is the analyzer's estimate and has not been independently measured. The repeated block might be intentional for separate readers or contexts; no upstream removal is authorized by this review. An attempt to fetch the published `context-hygiene==0.3.2` package in a separate execution environment was blocked by unavailable package-index networking; it is not an independent reproduction result.
