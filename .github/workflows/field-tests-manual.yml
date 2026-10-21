@@ -133,6 +133,29 @@ jobs:
           print('NOTE: heuristic finding counts are unverified; raw report withheld')
           PY
           echo 'Raw findings withheld pending manual verification.'
+      - name: Reproduce findings on the same pinned input
+        env:
+          TARGET: ${{ steps.source.outputs.path }}
+        run: |
+          set -euo pipefail
+          ctx-hygiene audit "upstream/$TARGET" --format json > audit-repeat.json 2> audit-repeat-stderr.txt
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          first=json.loads(Path('audit-stdout.json').read_text())
+          second=json.loads(Path('audit-repeat.json').read_text())
+          keys=('total_segments','total_tokens','tokens_recoverable','staleness_score','grade')
+          for key in keys:
+              if first.get(key) != second.get(key):
+                  raise SystemExit(f'Reproduction mismatch in {key}')
+          for key in ('contradictions','deadweight','compression_candidates','staleness_results'):
+              a,b=first.get(key),second.get(key)
+              if not isinstance(a,list) or not isinstance(b,list) or len(a)!=len(b):
+                  raise SystemExit(f'Reproduction mismatch in {key} count')
+              print(f'reproduced_{key}_count={len(a)}')
+          print('same_environment_repeat=true')
+          print('NOTE: repeat run is same-environment reproducibility, not independent validation')
+          PY
       - name: Delete unreviewed raw output
         if: always()
-        run: rm -f audit-stdout.json audit-stderr.txt
+        run: rm -f audit-stdout.json audit-stderr.txt audit-repeat.json audit-repeat-stderr.txt
