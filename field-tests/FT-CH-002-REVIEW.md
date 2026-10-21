@@ -65,3 +65,18 @@ G2 requires matching input hash, tool version, nonempty parser output and matchi
 Run: https://github.com/AreteDriver/arete-portfolio/actions/runs/39545957085/job/119044056869
 
 The five `deadweight` finding objects contain `reason`, `segment_index`, and `tokens_recoverable`. The workflow disclosed only allowlisted numeric locators: **segment indices 37, 38, 39, 40, and 41**, in reported order. Same-environment finding-content fingerprints matched. These indices are analyzer segments, **not source-file line numbers**; mapping requires the analyzer segmentation rules or a locally reviewed report. No finding text or reasons have been manually evaluated. G2 independent reproduction and G3 manual classification remain pending; publication remains blocked.
+
+
+## Source-level duplicate verification (2026-10-21)
+
+Inspected `AreteDriver/context-hygiene` generic Markdown parser (default branch) and the pinned `browser-use/browser-use` `AGENTS.md` at `aa093a843da5edbf323c0b4145c9b6a0db3ecde8`. The parser splits markdown sections on headings (`#` through `######`) into zero-based SYSTEM segments. Reconstructing that segmentation yielded **113 segments**, matching the audited count. Exact string comparison confirmed five duplicates:
+
+| Flagged index | Earlier identical index | Pinned source lines | Section heading |
+|---|---|---|---|
+| 37 | 32 | 380–386 | Agent History |
+| 38 | 33 | 387–397 | Access useful information |
+| 39 | 34 | 398–408 | Analysis methods |
+| 40 | 35 | 409–414 | Structured output (when using output_model_schema) |
+| 41 | 36 | 415–419 | Structured Output |
+
+**Reviewer conclusion:** All five flagged segments are exact-text duplicates of preceding segments in this pinned file. This confirms duplicate detection for these five cases; it does not verify token savings independently, approve upstream edits, or demonstrate effectiveness on other repositories. The current source inspection uses the analyzer repository's default-branch parser, not a verified installed `0.3.2` source artifact; G2 independent installed-version reproduction remains pending. No raw finding report was published.
