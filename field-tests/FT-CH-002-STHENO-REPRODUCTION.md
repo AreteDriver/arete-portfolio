@@ -49,4 +49,4 @@ Empty audit stderr SHA-256: `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca49
 Dependency-freeze SHA-256: `1d470971b648ef4db868acc2b8f1c9b05c054c50363d6342f9644d3073907243`.
 Installation metadata SHA-256: `8da8879a60e51a76d27216a994fdd1fe36cf285777e8b7a091f4a3f89f70550f`.
 
-Installed implementation hashes and per-segment content hashes are included in the sanitized JSON. Only reviewed allowlisted findings metadata is included; complete raw reports, secrets, user account names, network addresses, and credential paths are withheld. Case-study publication remains blocked pending G4 review; no upstream edit is proposed.
+Installed implementation hashes and per-segment content hashes are included in the sanitized JSON. Only reviewed allowlisted findings metadata is included; complete raw reports, secrets, user account names, network addresses, and credential paths are withheld. G4 content review and explicit repository publication authorization are recorded in the [review](FT-CH-002-REVIEW.md). See the [case study](FT-CH-002-CASE-STUDY.md); no upstream edit is proposed.

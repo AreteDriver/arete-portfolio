@@ -112,7 +112,7 @@
   },
   "limitations": [
     "Cross-environment reproducibility and exact duplication verified only for this pinned input; no general accuracy or behavior-preserving removal claim.",
-    "Raw reports remain private on Stheno; no upstream edit or case-study publication."
+    "Raw reports remain private on Stheno; no upstream edit. Repository case-study publication authorized separately after reproduction."
   ],
   "independent_tokenizer": {
     "version": "0.14.0",

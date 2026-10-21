@@ -1,6 +1,6 @@
 # FT-CH-002 — manual review and reproduction
 
-**Status:** G1 execution verified; same-environment repeatability verified; G2 independent published-package reproduction passed on Stheno; G3 five exact duplicates and analyzer reasons verified, with independent token measurements recorded (human G3 sign-off received for confirmed exact duplication only); G4 case-study publication blocked.
+**Status:** G1 execution verified; same-environment repeatability verified; G2 independent published-package reproduction passed on Stheno; G3 five exact duplicates and analyzer reasons verified, with independent token measurements recorded (human G3 sign-off received for confirmed exact duplication only); G4 content approved; case-study repository publication and merge authorized (2026-10-21).
 
 - Source: https://github.com/browser-use/browser-use
 - Revision: `aa093a843da5edbf323c0b4145c9b6a0db3ecde8`
@@ -41,7 +41,7 @@ Do not commit `report.json` or paste unreviewed raw findings into public CI logs
 
 ## Five-finding review matrix
 
-Updated from the private Stheno report and independent exact-text comparisons. The rationale column now records verified analyzer reason strings. Word-proxy estimates and independent cl100k_base measurements are distinct; see the [Stheno reproduction](FT-CH-002-STHENO-REPRODUCTION.md). Exact duplication does not establish that removal preserves intended behavior. Human sign-off remains pending.
+Updated from the private Stheno report and independent exact-text comparisons. The rationale column now records verified analyzer reason strings. Word-proxy estimates and independent cl100k_base measurements are distinct; see the [Stheno reproduction](FT-CH-002-STHENO-REPRODUCTION.md). Exact duplication does not establish that removal preserves intended behavior. Human G3 sign-off for exact duplication only is recorded below.
 
 | Candidate | Source line(s) | Tool's rationale | Necessary context or cross-reference | Reviewer classification | Token estimate | Decision |
 |---|---|---|---|---|---|---|
@@ -64,7 +64,7 @@ G2 requires matching input hash, tool version, nonempty parser output and matchi
 
 Run: https://github.com/AreteDriver/arete-portfolio/actions/runs/39545957085/job/119044056869
 
-The five `deadweight` finding objects contain `reason`, `segment_index`, and `tokens_recoverable`. The workflow disclosed only allowlisted numeric locators: **segment indices 37, 38, 39, 40, and 41**, in reported order. Same-environment finding-content fingerprints matched. These indices are analyzer segments, **not source-file line numbers**; mapping requires the analyzer segmentation rules or a locally reviewed report. At this checkpoint, finding text and reasons had not been evaluated and independent reproduction remained pending. The subsequent Stheno run below supersedes that reproduction status; the later human sign-off below supersedes the G3 status; case-study publication remains pending.
+The five `deadweight` finding objects contain `reason`, `segment_index`, and `tokens_recoverable`. The workflow disclosed only allowlisted numeric locators: **segment indices 37, 38, 39, 40, and 41**, in reported order. Same-environment finding-content fingerprints matched. These indices are analyzer segments, **not source-file line numbers**; mapping requires the analyzer segmentation rules or a locally reviewed report. At this checkpoint, finding text and reasons had not been evaluated and independent reproduction remained pending. The subsequent Stheno run below supersedes that reproduction status; the later human sign-off below supersedes the G3 status; repository publication is subsequently authorized in the G4 record below.
 
 
 ## Source-level duplicate verification (2026-10-21, before Stheno reproduction)
@@ -102,4 +102,10 @@ Reviewer: AreteDriver, by explicit in-thread confirmation. Approval recorded at 
 
 > I inspected the repeated source sections and approve G3 for confirmed exact duplication only. I accept the parser and token-count limitations. This does not approve upstream removal or case-study publication
 
-**Scope:** G3 passed for confirmed exact duplication only. Five parser segments span two repeated documentation sections; three segment boundaries are Python comments inside fenced code. The reviewer accepts those parser limits and the distinction between 277 word-proxy estimated tokens and 394 separately measured cl100k_base tokens. Intentional repetition, behavior-preserving removal, general accuracy and runtime savings remain unassessed. G4 and case-study publication remain pending; no upstream removal is authorized.
+**Scope:** G3 passed for confirmed exact duplication only. Five parser segments span two repeated documentation sections; three segment boundaries are Python comments inside fenced code. The reviewer accepts those parser limits and the distinction between 277 word-proxy estimated tokens and 394 separately measured cl100k_base tokens. Intentional repetition, behavior-preserving removal, general accuracy and runtime savings remain unassessed. At G3 sign-off, G4 and publication authorization were still pending; the later G4 record below supersedes that status. No upstream removal is authorized.
+
+## G4 approval and publication authorization — 2026-10-21
+
+AreteDriver approved G4 content review after reviewing the local case-study draft (SHA-256 `1741f0fd9a2f804380571c3027cdc4ddfbaba89426cde37858d4b63afb909f9e`). The reviewed scope covers attribution, license identification, privacy, selection limitations and wording. The draft identifies the pinned Browser Use MIT license and the analyzer wheel's Business Source License 1.1, credits the authors, includes only sanitized metadata and preserves the parser/token-count limitations.
+
+The user then explicitly instructed: "Publish, merge. What upstream changes ?" Repository publication and PR #19 merge are authorized. The [case study](FT-CH-002-CASE-STUDY.md) preserves the approved substantive content; publication-status text and links are updated for this authorization. Raw reports remain private. No Browser Use edit, upstream PR, maintainer contact, behavioral claim or general-accuracy claim is authorized or proposed.
