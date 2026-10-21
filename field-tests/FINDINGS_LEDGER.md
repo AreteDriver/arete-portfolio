@@ -4,7 +4,9 @@
 
 | Case ID | Repository@SHA | Analyzer | Execution | Report summary | Independent reproduction | Manual findings review | Published case study |
 |---|---|---|---|---|---|---|---|
-| FT-CH-001 | `anthropics/claude-code@49b8c35f8c57493c2f0eba1429ccaa9638ab8712` (`CLAUDE.md`) | `context-hygiene==0.3.2` | **PASS** — exit 0; valid JSON | Grade A; 2 segments; 430 estimated tokens; 0 recoverable; staleness 0.1 | Pending | Pending | No |
+| FT-CH-001 | `anthropics/claude-code@49b8c35f8c57493c2f0eba1429ccaa9638ab8712` (`CLAUDE.md`) | `context-hygiene==0.3.2` | **PASS** — exit 0; valid JSON | Grade A; 2 segments; 430 estimated tokens; 0 recoverable; staleness 0.1; second run: contradictions 0, deadweight 0, compression candidates 0, staleness results 2 | Pending | Pending | No |
+
+**Follow-up evidence:** [GitHub Actions run 39543333571, job 119035834116](https://github.com/AreteDriver/arete-portfolio/actions/runs/39543333571/job/119035834116), after merge commit `984bd3938f3e0db189b179bde3ba3017cda86f60`. The stricter validator passed with nonempty parsed content and all four finding collections present. Heuristic counts were contradictions 0, deadweight 0, compression candidates 0, and staleness results 2. These are unreviewed analyzer outputs, not independently validated findings.
 
 **Primary evidence:** [GitHub Actions run 39541571190, job 119030275457](https://github.com/AreteDriver/arete-portfolio/actions/runs/39541571190/job/119030275457), executed on portfolio merge commit `9df5e586cc792d48839fa48afa48d86a21b7815e`.
 
