@@ -160,6 +160,14 @@ jobs:
               if fingerprints(first[key]) != fingerprints(second[key]):
                   raise SystemExit(f'Reproduction mismatch in {key} content fingerprints')
               print(f'reproduced_{key}_fingerprints_match=true')
+          for i, item in enumerate(first['deadweight'], 1):
+              if not isinstance(item, dict):
+                  continue
+              print(f'candidate_{i}_field_names='+','.join(sorted(item)))
+              for key in ('line','line_number','start_line','end_line','segment_index','token_count'):
+                  val=item.get(key)
+                  if type(val) is int and 0 <= val <= 1000000:
+                      print(f'candidate_{i}_{key}={val}')
           print('same_environment_repeat=true')
           print('NOTE: repeat run is same-environment reproducibility, not independent validation')
           PY
