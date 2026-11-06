@@ -1,19 +1,22 @@
 # Arete Portfolio
 
-Professional portfolio site for aretedriver.dev — AI developer tools, flagship projects, hackathon builds, and case studies.
+Professional portfolio for AI operations, enablement, workflow automation, and practical tooling.
 
-Single-page static HTML site deployed on Vercel. Showcases the AreteDriver project portfolio including PyPI tools, blockchain projects, gaming, and enterprise integrations.
+Single-page static HTML site deployed through GitHub Pages. It highlights practical work in MCP operations, evaluation, governance, cost visibility, documentation, and reliable human-AI handoffs.
 
 ## Live
 
-[aretedriver.dev](https://aretedriver.dev)
+[GitHub Pages](https://aretedriver.github.io/arete-portfolio/)
+
+The `aretedriver.dev` custom-domain and DNS migration is a separate follow-up and is not implied by a successful Pages deployment.
 
 ## Features
 
 - Single-page responsive design
 - Project showcases with live links
+- Playable itch.io releases with explicit playtest status
 - SEO optimized (sitemap, robots.txt, OG tags)
-- Vercel deployment with CSP headers
+- GitHub Pages deployment from `main`
 
 ## Development
 
