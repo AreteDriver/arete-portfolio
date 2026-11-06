@@ -2,14 +2,15 @@
 
 ## Project Overview
 
-Professional portfolio site for aretedriver.dev — single-page static HTML showcasing AI developer tools, flagship projects, hackathon builds, case studies, and game projects. Deployed on Vercel.
+Professional portfolio site for AI operations, enablement, workflow automation, and practical tooling. It is a single-page static site deployed through GitHub Pages.
 
 ## Current State
 
 - **Language**: HTML, CSS, JavaScript (vanilla — no framework)
 - **Files**: 10
 - **Lines**: ~1,771 (index.html is the entire site)
-- **Domain**: aretedriver.dev (Vercel)
+- **Current URL**: https://aretedriver.github.io/arete-portfolio/
+- **Planned custom domain**: aretedriver.dev (DNS migration pending)
 
 ## Architecture
 
@@ -30,18 +31,18 @@ arete-portfolio/
 - **Frontend**: Static HTML + inline CSS + vanilla JavaScript
 - **Styling**: CSS custom properties (dark theme, accent `#00ff88`)
 - **Icons**: Inline SVG symbol sprites
-- **Analytics**: Vercel Insights + Speed Insights
-- **Deployment**: Vercel (static, no build step)
+- **Analytics**: none
+- **Deployment**: GitHub Pages via `.github/workflows/deploy-pages.yml`
 - **SEO**: JSON-LD structured data (WebSite, Person, SoftwareApplication), OG tags, canonical URL, sitemap
 
 ## Page Sections
 
-1. **AI Developer Tools** (`#tools`) — 7 published CLI tools with pricing tiers (Free/Pro), Stripe payment links, bundle pricing ($29/mo or $199/yr)
-2. **Flagship Projects** (`#flagships`) — Animus, BenchGoblins, Quorum
-3. **Hackathon Projects** (`#hackathons`) — WatchTower, Frontier Tribe OS, Monolith (EVE Frontier / Sui blockchain)
-4. **Case Studies** (`#case-studies`) — anchormd deep-dive + 9 project cards (BenchGoblins, Gatekeeper, Animus, Convergent, Dossier, LikX, Argus, G13, Overwatch, Fleet Monitor)
-5. **Arcade** (`#arcade`) — Cytogenesis (Next.js + d3 cellular-automation roguelike), Rebellion (Rust/Bevy WASM)
-6. **Stats Bar** — 37,000+ tests, 7 CLI tools, 8 live systems, 3 hackathon builds
+1. **What to Review First** (`#current-focus`) — mcp-manager, Forgehand, arete-evals, arete-context-mcp, and The Human Stack
+2. **AI Developer Tools** (`#tools`) — practical CLI and MCP tooling
+3. **Additional Systems** (`#additional-systems`) — Animus and the standalone Loop Governor
+4. **Playable Games** (`#games`) — current itch.io browser playtests
+5. **Project Archive** (`#project-archive`) — earlier non-game builds with explicit hosting and archive status
+6. **Stats Bar** — verified enterprise-operations outcomes and current review path
 
 ## Coding Standards
 
@@ -57,8 +58,7 @@ arete-portfolio/
 # Local preview (any static server)
 python -m http.server 8000
 
-# Deploy (automatic via Vercel git integration, or manual)
-vercel --prod
+# Deployment runs automatically through GitHub Actions after a push to main.
 
 # Check for broken internal references
 grep -oP 'href="#\K[^"]+' index.html | sort -u
@@ -71,16 +71,11 @@ grep -oP 'href="#\K[^"]+' index.html | sort -u
 - Do NOT hardcode stats that differ from the stats bar section (keep meta descriptions, JSON-LD, and stats bar in sync)
 - Do NOT add external CSS/JS dependencies — everything is inline for performance
 
-## Security Headers (vercel.json)
+## Legacy Vercel Configuration
 
-- `X-Content-Type-Options: nosniff`
-- `X-Frame-Options: DENY`
-- `Referrer-Policy: strict-origin-when-cross-origin`
-- `Content-Security-Policy`: restrictive (`default-src 'none'`, inline scripts/styles only)
-- `Permissions-Policy`: camera, mic, geo all denied
-- Image assets cached immutably (`max-age=31536000`)
+`vercel.json` is retained as migration history. GitHub Pages does not apply those response-header rules. Do not claim those headers are active without checking the deployed response.
 
 ## Git Conventions
 
 - Commit messages: Conventional commits (`feat:`, `fix:`, `docs:`, `style:`)
-- Branch: Work directly on `main` (static site, no deploy pipeline beyond Vercel auto-deploy)
+- Use a reviewable branch and pull request for publication changes; pushes to `main` trigger the Pages workflow.
