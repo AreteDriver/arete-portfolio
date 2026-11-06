@@ -21,9 +21,7 @@ arete-portfolio/
 ├── logo.webp        # WebP logo variant
 ├── og-image.jpg     # Open Graph social preview image
 ├── robots.txt       # SEO crawl directives
-├── sitemap.xml      # XML sitemap
-├── vercel.json      # Vercel config (headers, caching, CSP)
-└── .vercel/         # Vercel project metadata
+└── sitemap.xml      # XML sitemap
 ```
 
 ## Tech Stack
@@ -70,10 +68,6 @@ grep -oP 'href="#\K[^"]+' index.html | sort -u
 - Do NOT add a build step or framework — this is intentionally a zero-dependency static site
 - Do NOT hardcode stats that differ from the stats bar section (keep meta descriptions, JSON-LD, and stats bar in sync)
 - Do NOT add external CSS/JS dependencies — everything is inline for performance
-
-## Legacy Vercel Configuration
-
-`vercel.json` is retained as migration history. GitHub Pages does not apply those response-header rules. Do not claim those headers are active without checking the deployed response.
 
 ## Git Conventions
 
