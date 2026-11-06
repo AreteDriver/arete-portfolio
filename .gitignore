@@ -1,5 +1,3 @@
-.vercel
-
 # Security: prevent secret files from being committed
 .env
 .env.local
